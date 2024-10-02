@@ -1,13 +1,14 @@
 const express = require('express');
-const pash = require('path');
+const path = require('path');
 const fs = require('fs').promises;
 
 const app = express();
 
-const serverPublic = path.join(__dirname, 'public');
 
 const clientPath = path.join(__dirname, "..", "client/src");
-const dataPath = path.join(__dirname, 'data', 'users.json', 'recipes.json');
+const usersPath = path.join(__dirname, "data", "users.json");
+const recipesPath = path.join(__dirname, "data", "recipes.json");
+const serverPublic = path.join(__dirname, 'public');
 
 app.use(express.static(clientPath));
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +28,7 @@ app.get('/index', (req, res) => {
 
 app.get('/users', async (req, res) => {
     try {
-        const data = await fs.readFile(dataPath, 'utf8');
+        const data = await fs.readFile(usersPath, 'utf8');
 
         const users = JSON.parse(data);
         if (!users) {
@@ -43,25 +44,35 @@ app.get('/users', async (req, res) => {
 app.post('/submit-form', async (req, res) => {
     try {
         const { name, email, password } = req.body;
-
         let users = [];
         try {
-            const data = await fs.readFile(dataPath, 'utf8');
+            const data = await fs.readFile(clientPath, 'utf8');
             users = JSON.parse(data);
         } catch (error) {
-            console.error('Error reading the user data:', error);
+            console.error('Error reading user data: ', error);
             users = [];
         }
 
-        let user = users.find(u => u.name === name && u.email == email && u.password === password);
+        let user = users.find(u => u.name === name && user.email === email && user.password === password);
+        if (user) {
+            // something doesn't add up
+        } else {
+            user = { name, email, password };
+            users.push(user);
+        }
 
-        await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
-        res.redirect('form');
+        await fs.writeFile(clientPath, JSON.stringify(users, null, 2));
+        res.redirect('/form');
     } catch (error) {
-        console.error('Error processing form:', error);
-        res.status(500).send('Oops, an error occured while processing your submission.');
+        console.error('Error processing form: ', error);
+        res.status(500).send('An error occurred while processing your submission.');
     }
-})
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
     try {
@@ -69,7 +80,7 @@ app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, 
         const { newName, newEmail, newPassword } = req.body;
         console.log('Current user:', { currentName, currentEmail });
         console.log('New user data:', { newName, newEmail, newPassword });
-        const data = await fs.readFile(dataPath, 'utf8');
+        const data = await fs.readFile(usersPath, 'utf8');
         if (data) {
             let users = JSON.parse(data);
             const userIndex = users.findIndex(user => user.name === currentName && user.email === currentEmail && user.password === currentPassword);
@@ -78,7 +89,7 @@ app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, 
             }
             users[userIndex] = { ...users[userIndex], name: newName, email: newEmail };
             console.log(users);
-            await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+            await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
             res.status(200).json({ message: `You sent ${newName}, ${newEmail} and ${newPassword}` });
         }
     }
@@ -93,7 +104,7 @@ app.delete('/user/:name/:email/:password', async (req, res) => {
         const { name, email, password } = req.params;
         let users = [];
         try {
-            const data = await fs.readFile(dataPath, 'utf8');
+            const data = await fs.readFile(usersPath, 'utf8');
             users.JSON(parse(data));
         } catch (error) {
             return res.status(404).send(`File data can't be found`);
@@ -106,7 +117,7 @@ app.delete('/user/:name/:email/:password', async (req, res) => {
         console.log(userIndex);
         console.log(users);
         try {
-            await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+            await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
         } catch (error) {
             res.status(500).send("There was a problem!!!");
         }
@@ -115,3 +126,5 @@ app.delete('/user/:name/:email/:password', async (req, res) => {
         console.error("there was an error");
     }
 })
+
+

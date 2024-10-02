@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<<<<<<< HEAD
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temp form</title>
+  </head>
+  <body>
+    <h1>New User</h1>
+    <form action="/submit-form" method="POST">
+      <label for="name">Username:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" required /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
 
-</body>
-=======
-    <body>
-        <h1>New User</h1>
-        <form action="/submit-form" method="POST">
-        <label for="name">Username:</label>
-        <input type="text" id="name" name="name" required/><br /><br />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br /><br />
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" required /><br /><br />
-        <input type="submit" value="Submit"/>
-        </form>
-    </body>
->>>>>>> 12e321ea3d11964d98870fc25d7036a7eed19168
+    <div id="user-settings">
+      <h1>User Management</h1>
+      <h2>Update User</h2>
+      <form id="updateForm">
+        <label for="currentName">Current Username:</label>
+        <input type="text" id="currentName" required /><br /><br />
+        <label for="currentEmail">Current Email:</label>
+        <input type="email" id="currentEmail" required /><br /><br />
+        <label for="newName">New Username:</label>
+        <input type="text" id="newName" required /><br /><br />
+        <label for="newEmail">New Email:</label>
+        <input type="email" id="newEmail" required /><br /><br />
+        <button type="submit">Update User</button>
+      </form>
+
+      <h2>Delete User</h2>
+      <form id="delete-user">
+        <label for="delete-name">Username:</label>
+        <input type="text" id="delete-name" /> <br /><br />
+        <label for="delete-email">Email:</label>
+        <input type="text" id="delete-email" /> <br /><br />
+        <button type="submit">Delete Account</button>
+      </form>
+    </div>
+  </body>
 </html>

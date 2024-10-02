@@ -1,5 +1,5 @@
 const express = require('express');
-const pash = require('path');
+const path = require('path');
 const fs = require('fs').promises;
 
 const app = express();
@@ -15,12 +15,12 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', { root: clientPath });
- });
+});
 
 app.get('/form', (req, res) => {
     res.sendFile('pages/form.html', { root: serverPublic });
 });
-app.post('/submit-form', async (req, res) => { 
+app.post('/submit-form', async (req, res) => {
     try {
         const { name, email, password } = req.body;
         let users = [];
@@ -49,6 +49,6 @@ app.post('/submit-form', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => { 
+app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

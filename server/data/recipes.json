@@ -1,8 +1,8 @@
 [
     {
-        "name": "food",
-        "ingredients": ["a"],
-        "author": "author",
-        "instructions": "a"
+        "name": "Taco",
+        "ingredients": ["Taco"],
+        "author": "LeBron",
+        "instructions": "Taco Tuesday!"
     }
 ]

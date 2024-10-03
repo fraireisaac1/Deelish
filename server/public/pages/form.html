@@ -42,7 +42,7 @@
       </form>
       <script>
         document.getElementById("updateForm").addEventListener("submit", async (e) => {
-          e.preventDeault();
+          e.preventDefault();
           const currentName = document.getElementById("currentName").value;
           const currentEmail = document.getElementById("currentEmail").value;
           const newName = document.getElementById("newName");

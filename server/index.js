@@ -79,7 +79,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
+app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
     try {
         const { currentName, currentEmail, currentPassword } = req.params;
         const { newName, newEmail, newPassword } = req.body;
@@ -92,7 +92,7 @@ app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, 
             if (userIndex === -1) {
                 return res.status(404).json({ message: "User not found" });
             }
-            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail };
+            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail, password: newPassword };
             console.log(users);
             await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
             res.status(200).json({ message: `You sent ${newName}, ${newEmail} and ${newPassword}` });

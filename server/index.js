@@ -46,23 +46,23 @@ app.post('/submit-form', async (req, res) => {
         const { name, email, password } = req.body;
         let users = [];
         try {
-            const data = await fs.readFile(clientPath, 'utf8');
+            const data = await fs.readFile(usersPath, 'utf8');
             users = JSON.parse(data);
         } catch (error) {
             console.error('Error reading user data: ', error);
             users = [];
         }
 
-        let user = users.find(u => u.name === name && user.email === email && user.password === password);
+        let user = users.find(u => u.name === name && u.email === email && u.password === password);
         if (user) {
             // something doesn't add up
-            console.log(user);
+            console.log(user)
         } else {
             user = { name, email, password };
             users.push(user);
         }
 
-        await fs.writeFile(clientPath, JSON.stringify(users, null, 2));
+        await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
         res.redirect('/form');
     } catch (error) {
         console.error('Error processing form: ', error);

@@ -22,6 +22,10 @@ app.get('/form', (req, res) => {
     res.sendFile('pages/form.html', { root: serverPublic });
 })
 
+app.get('/deelish', (req, res) => { 
+    res.sendFile('pages/deelish.html', { root: serverPublic });
+});
+
 app.get('/index', (req, res) => {
     res.sendFile('pages/form.html', { root: serverPublic });
 })

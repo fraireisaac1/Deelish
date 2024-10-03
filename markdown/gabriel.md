@@ -1,6 +1,6 @@
-# Journal Enteries
+# Gabriel's Markdown File
 
-### Day 1, 10/1/2024
+### Day 1, 10/1/2024 Journal Entry
 ##### What did you accomplish today?
 We got our folder layouts finish and brainstormed several ideas for the frontend and backend
 ##### What is your role and responsibilities?

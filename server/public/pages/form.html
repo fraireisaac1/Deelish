@@ -70,7 +70,7 @@
           const name = document.getElementById("delete-name").value;
           const email = document.getElementById("delete-email").value;
           try {
-            const response = await fetch(`/user/${name}/${emial}`, {
+            const response = await fetch(`/user/${name}/${email}`, {
               method: "DELETE",
             });
             if (!response.ok) {

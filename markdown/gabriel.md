@@ -10,7 +10,6 @@ I hope to get a prototype of the website done tomorrow, not visually appealing b
 ##### What was your biggest challenge today?
 N/A, I did not struggle with anything and we had a strong start today.
 
-
 ### Day 2, 10/2/2024 Journal Entry
 ##### What new challenge arose today?
 Some minor push/pull issues got in our way but we managed to get past it.

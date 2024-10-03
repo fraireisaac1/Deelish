@@ -1,6 +1,6 @@
 # Hello
-
 Hi from Luis
+
 # Journal
 ## 10/1/2024
 1. What did you accomplish today?

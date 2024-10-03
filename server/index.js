@@ -104,19 +104,19 @@ app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, 
     }
 });
 
-app.delete('/user/:name/:email/:password', async (req, res) => {
+app.delete('/user/:name/:email', async (req, res) => {
     try {
-        const { name, email, password } = req.params;
+        const { name, email } = req.params;
         let users = [];
         try {
             const data = await fs.readFile(usersPath, 'utf8');
-            users.JSON(parse(data));
+            users = JSON.parse(data);
         } catch (error) {
             return res.status(404).send(`File data can't be found`);
         }
-        const userIndex = users.findIndex(user => user.name === name && user.email === email && user.password === password);
+        const userIndex = users.findIndex(user => user.name === name && user.email === email);
         if (userIndex === -1) {
-            return res.status(404).json({ message: 'User was not found :(' });
+            return res.status(404).send('User not found');
         }
         users.splice(userIndex, 1);
         console.log(userIndex);

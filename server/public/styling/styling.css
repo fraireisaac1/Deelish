@@ -8,3 +8,44 @@ Color Scheme:
 6 - 046e94
 7 - 29b2a0
 */
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    "main main main main"
+    "footer footer footer footer";
+}
+#title {
+  font-size: 70px;
+  margin: 20px;
+}
+.header {
+  grid-area: header;
+  background-color: #c36721;
+  font-family: "Lilita One";
+  color: white;
+  padding-left: 25px;
+}
+.legend {
+  background-color: #ffae42;
+  color: white;
+  height: 70px;
+  width: 250px;
+  align-content: center;
+  text-align: center;
+  font-family: "Arial";
+  font-size: 30px;
+  border-radius: 50px;
+  margin: auto;
+}
+.img {
+    grid-area: main;
+  max-width: 400px;
+  text-align: center;
+  margin: 20px;
+}
+img {
+  width: 300px;
+}

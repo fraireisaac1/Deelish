@@ -1,4 +1,4 @@
-# Journal Enteries
+# Gabriel's Journal Entries
 
 ### Day 1, 10/1/2024
 ##### What did you accomplish today?

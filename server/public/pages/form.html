@@ -40,6 +40,50 @@
         <input type="text" id="delete-email" /> <br /><br />
         <button type="submit">Delete Account</button>
       </form>
+      <script>
+        document.getElementById("updateForm").addEventListener("submit", async (e) => {
+          e.preventDeault();
+          const currentName = document.getElementById("currentName").value;
+          const currentEmail = document.getElementById("currentEmail").value;
+          const newName = document.getElementById("newName");
+          const newEmail = document.getElementById("newEmail");
+
+          try {
+            const response = await fetch(
+              `/update-user/${currentName}/${currentEmail}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ newName, newEmail }),
+              }
+            );
+            const data = await response.json();
+            console.log(data);
+          } catch(error) {
+            alert("Error updating user: " + error.message);
+          }
+        });
+        document.getElementById("delete-user").addEventListener('submit', async (e)=>{
+          e.preventDefault();
+          const name = document.getElementById("delete-name").value;
+          const email = document.getElementById("delete-email").value;
+          try {
+            const response = await fetch(`/user/${name}/${emial}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Problem fetching delete endpoint");
+            }
+            const data = await response.text();
+            console.log(data);
+          } catch(error) {
+            console.error("Uh oh, there was a a problem! " + error.message + ".");
+          }
+        });
+        
+      </script>
     </div>
   </body>
 </html>

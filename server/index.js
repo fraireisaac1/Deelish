@@ -56,6 +56,7 @@ app.post('/submit-form', async (req, res) => {
         let user = users.find(u => u.name === name && user.email === email && user.password === password);
         if (user) {
             // something doesn't add up
+            console.log(user);
         } else {
             user = { name, email, password };
             users.push(user);

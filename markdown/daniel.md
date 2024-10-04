@@ -17,3 +17,13 @@
 2. A very abundant resource I'm using is mostly W3Schools because it's concise and easy to understand.
 
 3. A resource to collaborate better was basically just communicating our issues... and Mr. Morales.
+
+### Day 3
+
+1. Yes, I believe I'm doing my best effort because my ribs feel like they might shatter, and I don't know why. Also, because I've actually spent most the time locked in.
+
+2. Probably finish what the thing is supposed to look like, but I think I've made actual good progress from what I've seen myself.
+
+3. The `position:` thing, because I'm having to use it, and I sometimes forget which either `absolute` or `relative` does.
+
+4. Actually speaking and being more communicative because I haven't spoken as much recently.

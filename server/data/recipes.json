@@ -1,6 +1,6 @@
 [
     {
-        "name": "Taco",
+        "food": "Taco",
         "ingredients": ["Taco"],
         "author": "LeBron",
         "instructions": "Taco Tuesday!"

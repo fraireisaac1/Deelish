@@ -130,6 +130,34 @@ app.delete('/user/:name/:email', async (req, res) => {
     } catch (error) {
         console.error("there was an error");
     }
-})
+});
 
+app.post('/submit-recipe', async (req, res) => {
+    try {
+        const { food, ingredients, author, instructions } = req.body;
+        let recipes = [];
+        try {
+            const data = await fs.readFile(recipesPath, 'utf8');
+            recipes = JSON.parse(data);
+        } catch (error) {
+            console.error('Error reading recipe data: ', error);
+            recipes = [];
+        }
+
+        let recipe = recipes.find(u => u.food === food && u.ingredients === ingredients && u.author === author && u.instructions === instructions);
+        if (recipe) {
+            // something doesn't add up
+            console.log(recipe)
+        } else {
+            recipe = { food, ingredients, author, instructions };
+            recipes.push(recipe);
+        }
+
+        await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
+        res.redirect('/deelish');
+    } catch (error) {
+        console.error('Error processing form: ', error);
+        res.status(500).send('An error occurred while processing your submission.');
+    }
+});
 

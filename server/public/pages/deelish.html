@@ -9,35 +9,35 @@
   <body>
     <div class="grid">
       <div class="header">
-        <p id="title">Deelish</p>
+        <nav>
+          <p id="title">Deelish</p>
+          <button onclick="redirectAbout()" id="about">About Us</button>
+          <p id="i">I</p>
+          <button onclick="redirectForm()" id="register">Register</button>
+          <button onclick="redirectForm()" id="sign-in">Sign In</button>
+        </nav>
       </div>
       <div class="img">
-        <div class="legend">Test</div>
-        <img
-          src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
-          alt="img"
-        />
+        <div>
+          <p class="legend"></p>
+          <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="">
+        </div>
+        <div>
+          <p class="legend"></p>
+          <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="">
+        </div>
+        <div>
+          <p class="legend"></p>
+          <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="">
+        </div>
+        <div>
+          <p class="legend"></p>
+          <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="">
+        </div>
       </div>
-      <div class="img">
-        <div class="legend">Test</div>
-        <img
-          src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
-          alt="img"
-        />
-      </div>
-      <div class="img">
-        <div class="legend">Test</div>
-        <img
-          src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
-          alt="img"
-        />
-      </div>
-      <div class="img">
-        <div class="legend">Test</div>
-        <img
-          src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
-          alt="img"
-        />
+      <div class="big-img">
+        <img src="https://www.shutterstock.com/image-photo/table-food-top-view-600nw-467823860.jpg" alt="">
+        <div></div>
       </div>
     </div>
 
@@ -79,5 +79,14 @@
 
       <input type="submit" value="Submit" />
     </form>
+
+    <script>
+      function redirectForm() {
+        window.location.href = 'form.html';
+      }
+      function redirectAbout() {
+        window.location.href = 'about-us.html';
+      }
+    </script>
   </body>
 </html>

@@ -79,7 +79,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
+app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, res) => {
     try {
         const { currentName, currentEmail, currentPassword } = req.params;
         const { newName, newEmail, newPassword } = req.body;
@@ -92,7 +92,7 @@ app.put('/update user/:currentName/:currentEmail/:currentPassword', async (req, 
             if (userIndex === -1) {
                 return res.status(404).json({ message: "User not found" });
             }
-            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail };
+            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail, password: newPassword };
             console.log(users);
             await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
             res.status(200).json({ message: `You sent ${newName}, ${newEmail} and ${newPassword}` });
@@ -130,6 +130,49 @@ app.delete('/user/:name/:email', async (req, res) => {
     } catch (error) {
         console.error("there was an error");
     }
-})
+});
 
+app.get('/recipes', async (req, res) => {
+    try {
+        const data = await fs.readFile(recipesPath, 'uft8');
+        
+        const recipes = JSON.parse(data);
+        if (!recipes) {
+            throw new Error("Hey that's not a recipe!");
+        }
+        res.status(200).json(recipes);
+    } catch (error) {
+        console.error("Problem getting recipes" + error.message);
+        res.status(500).json({ error: "Problem reading users" });
+    }
+});
+
+app.post('/submit-recipe', async (req, res) => {
+    try {
+        const { food, ingredients, author, instructions } = req.body;
+        let recipes = [];
+        try {
+            const data = await fs.readFile(recipesPath, 'utf8');
+            recipes = JSON.parse(data);
+        } catch (error) {
+            console.error('Error reading recipe data: ', error);
+            recipes = [];
+        }
+
+        let recipe = recipes.find(u => u.food === food && u.ingredients === ingredients && u.author === author && u.instructions === instructions);
+        if (recipe) {
+            // something doesn't add up
+            console.log(recipe)
+        } else {
+            recipe = { food, ingredients, author, instructions };
+            recipes.push(recipe);
+        }
+
+        await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
+        res.redirect('/deelish');
+    } catch (error) {
+        console.error('Error processing form: ', error);
+        res.status(500).send('An error occurred while processing your submission.');
+    }
+});
 

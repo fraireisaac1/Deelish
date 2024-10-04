@@ -132,6 +132,21 @@ app.delete('/user/:name/:email', async (req, res) => {
     }
 });
 
+app.get('/recipes', async (req, res) => {
+    try {
+        const data = await fs.readFile(recipesPath, 'uft8');
+        
+        const recipes = JSON.parse(data);
+        if (!recipes) {
+            throw new Error("Hey that's not a recipe!");
+        }
+        res.status(200).json(recipes);
+    } catch (error) {
+        console.error("Problem getting recipes" + error.message);
+        res.status(500).json({ error: "Problem reading users" });
+    }
+});
+
 app.post('/submit-recipe', async (req, res) => {
     try {
         const { food, ingredients, author, instructions } = req.body;

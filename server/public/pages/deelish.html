@@ -24,11 +24,21 @@
             src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
             alt=""
           />
+          <p class="legend"></p>
+          <img
+            src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
+            alt=""
+          />
         </div>
         <div>
           <p class="legend">Yakisoba</p>
           <img
             src="https://www.justonecookbook.com/wp-content/uploads/2023/09/Yakisoba-3464-V.jpg"
+            alt=""
+          />
+          <p class="legend"></p>
+          <img
+            src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
             alt=""
           />
         </div>
@@ -38,6 +48,11 @@
             src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/Carne-Asada-Tacos-3.jpg"
             alt=""
           />
+          <p class="legend"></p>
+          <img
+            src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
+            alt=""
+          />
         </div>
         <div>
           <p class="legend">Pizza</p>
@@ -45,10 +60,91 @@
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
             alt=""
           />
+          <p class="legend"></p>
+          <img
+            src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
+            alt=""
+          />
         </div>
+      </div>
+      <div class="big-img">
+        <img
+          src="https://www.shutterstock.com/image-photo/table-food-top-view-600nw-467823860.jpg"
+          alt=""
+        />
+        <div></div>
       </div>
     </div>
     <form action="/submit-recipe" method="POST">
+      <h1>Latest Recipes</h1>
+      <label for="food">Recipe Title:</label>
+      <input type="text" id="food" name="food" required /><br /><br />
+
+      <label for="img">Image of the Food:</label>
+      <input type="text" id="img" name="img" required/><br /><br />
+
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required /><br /><br />
+
+      <label for="ingredients">Ingredients Needed:</label>
+      <textarea
+        id="ingredients"
+        name="ingredients"
+        rows="2"
+        cols="15"
+        required
+      ></textarea>
+      <br /><br />
+
+      <label for="instructions">Instructions:</label>
+      <textarea
+        id="instructions"
+        name="instructions"
+        rows="2"
+        cols="15"
+        required
+      ></textarea>
+      <br /><br />
+      <input type="submit" value="Submit" />
+
+    </form>
+
+      <h1>Recipe Management</h1>
+      <h2>Update Recipe</h2>
+      <form id="updateForm">
+        <label for="currentFood">Current Food:</label>
+        <input type="text" id="currentFood" required /><br /><br />
+        <label for="currentImg">Current Image:</label>
+        <input type="text" id="currentImg" required /><br /><br />
+        <label for="currentIngredients">Current Ingredients:</label>
+        <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" required></textarea><br /><br />
+        <label for="currentAuthor">Current Author:<label>
+        <input type="text" id="currentAuthor" required /><br /><br />
+        <label for="currentInstructions">Current Instructions:</label>
+        <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" required></textarea><br /><br />
+        <hr></hr>
+        <!-- <p>-------------------------------------------</p> -->
+        <label for="newFood">New Food:</label>
+        <input type="text" id="newFood" required /><br /><br />
+        <label for="newImg">New Image:</label>
+        <input type="text" id="newImg" required /><br /><br />
+        <label for="newIngredients">New Ingredients:</label>
+        <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" required></textarea><br /><br />
+        <label for="newAuthor">New Author:<label>
+        <input type="text" id="newAuthor" required /><br /><br />
+        <label for="newInstructions">New Instructions:</label>
+        <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" required></textarea><br /><br />
+        <button type="submit">Update Recipe</button>
+      </form>
+
+      <h2>Delete User</h2>
+      <form id="delete-user">
+        <label for="delete-name">Username:</label>
+        <input type="text" id="delete-name" /> <br /><br />
+        <label for="delete-email">Email:</label>
+        <input type="text" id="delete-email" /> <br /><br />
+        <button type="submit">Delete Account</button>
+      </form>
       <fieldset>
         <legend>Latest Recipes</legend>
         <label for="food">Recipe Title:</label>
@@ -88,10 +184,65 @@
     <script>
       function redirectForm() {
         window.location.href = "form.html";
+        window.location.href = "form.html";
       }
       function redirectAbout() {
         window.location.href = "about-us.html";
+        window.location.href = "about-us.html";
       }
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const currentFood = document.getElementById("currentFood").value;
+          const currentImg = document.getElementById("currentImg").value;
+          const currentIngredients = document.getElementById("currentIngredients").value;
+          const currentAuthor = document.getElementById("currentAuthor").value;
+          const currentInstructions = document.getElementById("currentInstructions").value;
+          const newFood = document.getElementById("newFood").value;
+          const newImg = document.getElementById("newImg").value;
+          const newIngredients = document.getElementById("newIngredients").value;
+          const newAuthor = document.getElementById("newAuthor").value;
+          const newInstructions = document.getElementById("newInstructions").value;
+
+          try {
+            const response = await fetch(
+              `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
+              }
+            );
+            const data = await response.json();
+            console.log(data);
+          } catch (error) {
+            alert("Error updating recipe: " + error.message);
+          }
+        });
+      document
+        .getElementById("delete-user")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("delete-name").value;
+          const email = document.getElementById("delete-email").value;
+          try {
+            const response = await fetch(`/user/${name}/${email}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Problem fetching delete endpoint");
+            }
+            const data = await response.text();
+            console.log(data);
+          } catch (error) {
+            console.error(
+              "Uh oh, there was a a problem! " + error.message + "."
+            );
+          }
+        });
     </script>
   </body>
 </html>

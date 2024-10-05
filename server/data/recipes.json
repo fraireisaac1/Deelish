@@ -1,8 +1,16 @@
 [
-    {
-        "food": "Taco",
-        "ingredients": ["Taco"],
-        "author": "LeBron",
-        "instructions": "Taco Tuesday!"
-    }
+  {
+    "food": "Taco",
+    "img": "https://cdn.pixabay.com/photo/2023/07/24/17/09/mexican-8147497_1280.png",
+    "ingredients": "Bla",
+    "author": "LeBron",
+    "instructions": "Taco Tuesday!"
+  },
+  {
+    "food": "Hot Dogs",
+    "img": "https://img.freepik.com/free-photo/classic-hot-dog-with-ketchup-mustard-sauce-isolated-white-background_123827-29754.jpg",
+    "ingredients": "blah",
+    "author": "Isaac",
+    "instructions": "blah"
+  }
 ]

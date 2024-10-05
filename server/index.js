@@ -149,7 +149,7 @@ app.get('/recipes', async (req, res) => {
 
 app.post('/submit-recipe', async (req, res) => {
     try {
-        const { food, ingredients, author, instructions } = req.body;
+        const { food, img, ingredients, author, instructions } = req.body;
         let recipes = [];
         try {
             const data = await fs.readFile(recipesPath, 'utf8');
@@ -159,12 +159,12 @@ app.post('/submit-recipe', async (req, res) => {
             recipes = [];
         }
 
-        let recipe = recipes.find(u => u.food === food && u.ingredients === ingredients && u.author === author && u.instructions === instructions);
+        let recipe = recipes.find(u => u.food === food && u.img === img && u.ingredients === ingredients && u.author === author && u.instructions === instructions);
         if (recipe) {
             // something doesn't add up
             console.log(recipe)
         } else {
-            recipe = { food, ingredients, author, instructions };
+            recipe = { food, img, ingredients, author, instructions };
             recipes.push(recipe);
         }
 
@@ -176,3 +176,55 @@ app.post('/submit-recipe', async (req, res) => {
     }
 });
 
+app.put('/update-recipe/:currentFood/:currentImg/:currentIngredients/:currentAuthor/:currentInstructions', async (req, res) => {
+    try {
+        const { currentFood, currentImg, currentIngredients, currentAuthor, currentInstructions } = req.params;
+        const { newFood, newImg, newIngredients, newAuthor, newInstructions } = req.body;
+        // console.log('Current user:', { currentName, currentEmail });
+        // console.log('New user data:', { newName, newEmail, newPassword });
+        const data = await fs.readFile(recipesPath, 'utf8');
+        if (data) {
+            let recipes = JSON.parse(data);
+            const recipeIndex = recipes.findIndex(r => r.food === currentFood, r.img === currentImg, r.ingredients === currentIngredients, r.author === currentAuthor, r.instructions === currentInstructions);
+            if (recipeIndex === -1) {
+                return res.status(404).json({ message: "Recipe not found" });
+            }
+            recipes[recipeIndex] = { ...recipes[recipeIndex], food: newFood, img: newImg, ingredients: newIngredients, author: newAuthor, instructions: newInstructions };
+            console.log(recipes);
+            await fs.writeFile(recipesPath, JSON.stringify(users, null, 2));
+            res.status(200).json({ message: `You sent ${newFood}, ${newImg}, ${newIngredients}, ${newAuthor}, and ${newInstructions}` });
+        }
+    }
+    catch (error) {
+        console.error('Error updating recipe:', error);
+        res.status(500).send('An error occured while trying to update this recipe');
+    }
+});
+
+app.delete('/user/:food/:author', async (req, res) => {
+    try {
+        const { food, author } = req.params;
+        let recipes = [];
+        try {
+            const data = await fs.readFile(recipesPath, 'utf8');
+            recipes = JSON.parse(data);
+        } catch (error) {
+            return res.status(404).send(`File data can't be found`);
+        }
+        const recipeIndex = recipes.findIndex(r => r.food === food && r.author === author);
+        if (recipeIndex === -1) {
+            return res.status(404).send('Recipe not found');
+        }
+        recipes.splice(recipeIndex, 1);
+        console.log(recipeIndex);
+        console.log(recipes);
+        try {
+            await fs.writeFile(recipesPath, JSON.stringify(users, null, 2));
+        } catch (error) {
+            res.status(500).send("There was a problem!!!");
+        }
+        return res.send('Nice you deleted this recipe');
+    } catch (error) {
+        console.error("there was an error");
+    }
+});

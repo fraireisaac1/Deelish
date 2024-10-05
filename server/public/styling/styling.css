@@ -67,7 +67,7 @@ nav > button {
   align-content: center;
   text-align: center;
   font-family: "Arial";
-  font-size: 15px;
+  font-size: 25px;
   border-radius: 50px;
   margin: auto;
 }
@@ -75,6 +75,7 @@ nav > button {
   text-align: center;
   grid-area: main;
   margin: 30px;
+  margin-bottom: 60px;
   max-width: 100%;
   align-items: center;
 }
@@ -104,10 +105,19 @@ img {
   margin: 70px;
 }
 
+form {
+  background-color: #ffcc33;
+  border-radius: 50px;
+}
 fieldset {
+  position: relative;
   border: none;
+  padding: 20px;
 }
 legend {
+  position: absolute;
+  top: -25px;
+  left: 41%;
   font-family: "Lilita One";
   font-size: 30px;
   background-color: #ffae42;

@@ -4,9 +4,174 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+          margin: 0;
+            padding: 0;
+        }
+        .container {
+          width: 100%;
+            height: 100vh;
+            font-family: sans-serif;
+            /*background: rgba(180, 120, 0);*/
+            background: #fff;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hidden {
+          display: none;
+        }
+        .card {
+          width: 350px;
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px 20px rgba(0,0,0,0.26);
+            perspective: 1000px;
+        }
+        .inner-box {
+          position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        .card-front, .card-back {
+          position: absolute;
+            width: 100%;
+            height:100%;
+            border: 5px solid gold;
+            border-radius: 20px;
+            background-position: center;
+            background-size: cover;
+            background-image: linear-gradient(rgba(80,50,0,0.75),rgba(80,50,0,0.75)),url(https://wallpaperaccess.com/full/3691432.jpg);
+            padding: 55px;
+            box-sizing: border-box;
+            backface-visibility: hidden;
+        }
+        .card-back {
+          transform: rotateY(180deg);
+        }
+        .card h2 {
+          font-weight: normal;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-box {
+          width: 100%;
+            background: transparent;
+            border: 1px solid #fff;
+            margin: 6px 0;
+            height: 32px;
+            border-radius: 20px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            outline: none;
+            text-align: center;
+            color: #fff;
+        }
+        ::placeholder {
+          color: #fff;
+            font-size: 12px;
+        }
+        button {
+          width: 100%;
+            background: transparent;
+            border: 1px solid #fff;
+            margin: 35px 0 10px;
+            height: 32px;
+            font-size: 12px;
+            border-radius: 20px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            outline: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        .submit-btn {
+          position: relative;
+        }
+        .submit-btn::after {
+          content: '\27a4';
+            color: #333;
+            line-height: 32px;
+            font-size: 17px;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+        }
+        span {
+          font-size: 13px;
+            margin-left: 10px;
+        }
+        .card .btn {
+          margin-top: 70px;
+        }
+        .card, a {
+          color: #fff;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+</style>
   </head>
   <body>
-    <h1>New User</h1>
+    <div class="container" id="one">
+	<div class="card">
+    	<div class="inner-box" id="card">
+        	<div class="card-front">
+            	<h2>LOGIN</h2>
+                <form>
+                	<input type="email" class="input-box" placeholder="Your Email Id" required >
+                  <input type="password" class="input-box" placeholder="Password" required >
+                  <button type="submit" class="submit-btn">Submit</button>
+                  <input type="checkbox"><span>Remember Me</span>
+                </form>
+                <button type="button" class="btn" onclick="openRegister()">Create New Account</button>
+                <a href="" class="update-account">Update Account</a>
+                <a href="" class="delete-account">Delete Account</a>
+            </div>
+            <div class="card-back">
+            	<h2>REGISTER</h2>
+                <form action="/submit-form" method="POST">
+                <input type="text" class="input-box" id="name" name="name" placeholder="Username" required >
+                	<input type="email" class="input-box" id="email" name="email" placeholder="Your Email Id" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required >
+                    <input type="password" class="input-box" id="password" name="password" placeholder="Password" pattern="(?=.*/d)(?=.*[a-z])(?=.*{A-Z}),{8,}" required >
+                    <input type="submit" class="submit-btn" value="Submit">
+                    <input type="checkbox"><span>Remember Me</span>
+                </form>
+                <button type="button" class="btn" onclick="openLogin()">I Already Have an Account</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="two">
+	<div class="card">
+    	<div class="inner-box" id="card">
+        	<div class="card-front">
+            	<h2>UPDATE ACCOUNT</h2>
+                <form>
+                	<input type="email" class="input-box" placeholder="Your Email Id" required >
+                    <input type="password" class="input-box" placeholder="Password" required >
+                    <button type="submit" class="submit-btn">Update</button>
+                    <input type="checkbox"><span>Remember Me</span>
+                </form>
+                <a href="" class="back-to-login">Back to Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--<h1>New User</h1>
     <form action="/submit-form" method="POST">
       <label for="name">Username:</label>
       <input type="text" id="name" name="name" required /><br /><br />
@@ -15,7 +180,7 @@
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" pattern="(?=.*/d)(?=.*[a-z])(?=.*{A-Z}),{8,}" required /><br /><br />
       <input type="submit" value="Submit" />
-    </form>
+    </form>-->
 
     <div id="user-settings">
       <h1>User Management</h1>
@@ -88,7 +253,46 @@
             console.error("Uh oh, there was a a problem! " + error.message + ".");
           }
         });
+
+        var card = document.getElementById("card");
+    
+    function openRegister() {
+    	card.style.transform = "rotateY(-180deg)";
+    }
+    
+    function openLogin() {
+    	card.style.transform = "rotateY(0deg)";
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    	const loginRegisterForm = document.getElementById("one");
+        const updateForm = document.getElementById("two");
+        updateForm.classList.add("hidden");
+        const deleteForm = document.getElementById("three");
+        deleteForm.classList.add("hidden");
         
+        document.querySelector(".update-account").addEventListener("click", (e) => {
+    		e.preventDefault();
+    		loginRegisterForm.classList.add("hidden");
+        	deleteForm.classList.add("hidden");
+        	updateForm.classList.remove("hidden");
+    	});
+    	document.querySelector(".delete-account").addEventListener("click", (e) => {
+    		e.preventDefault();
+    		loginRegisterForm.classList.add("hidden");
+        	updateForm.classList.add("hidden");
+        	deleteForm.classList.remove("hidden");
+    	});
+        const loginReturns = document.querySelectorAll(".back-to-login");
+        loginReturns.forEach(loginReturn => {
+        	loginReturn.addEventListener("click", (e) => {
+    			e.preventDefault();
+        		updateForm.classList.add("hidden");
+        		deleteForm.classList.add("hidden");
+            	loginRegisterForm.classList.remove("hidden");
+    		});
+        });
+    });  
       </script>
     </div>
   </body>

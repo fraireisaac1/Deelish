@@ -171,7 +171,7 @@ hr {
           <button onclick="redirectForm()" id="sign-in">Sign In</button>
         </nav>
       </div>
-      <div class="img">
+      <div class="img" id ="container">
         <div>
           <p class="legend">Cake</p>
           <img
@@ -273,59 +273,106 @@ hr {
       function redirectAbout() {
         window.location.href = "about-us.html";
       }
-      document
-        .getElementById("updateRecipe")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const currentFood = document.getElementById("currentFood").value;
-          const currentImg = document.getElementById("currentImg").value;
-          const currentIngredients = document.getElementById("currentIngredients").value;
-          const currentAuthor = document.getElementById("currentAuthor").value;
-          const currentInstructions = document.getElementById("currentInstructions").value;
-          const newFood = document.getElementById("newFood").value;
-          const newImg = document.getElementById("newImg").value;
-          const newIngredients = document.getElementById("newIngredients").value;
-          const newAuthor = document.getElementById("newAuthor").value;
-          const newInstructions = document.getElementById("newInstructions").value;
+      // document
+      //   .getElementById("updateRecipe")
+      //   .addEventListener("submit", async (e) => {
+      //     e.preventDefault();
+      //     const currentFood = document.getElementById("currentFood").value;
+      //     const currentImg = document.getElementById("currentImg").value;
+      //     const currentIngredients = document.getElementById("currentIngredients").value;
+      //     const currentAuthor = document.getElementById("currentAuthor").value;
+      //     const currentInstructions = document.getElementById("currentInstructions").value;
+      //     const newFood = document.getElementById("newFood").value;
+      //     const newImg = document.getElementById("newImg").value;
+      //     const newIngredients = document.getElementById("newIngredients").value;
+      //     const newAuthor = document.getElementById("newAuthor").value;
+      //     const newInstructions = document.getElementById("newInstructions").value;
 
-          try {
-            const response = await fetch(
-              `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
-              }
-            );
-            const data = await response.json();
-            console.log(data);
-          } catch (error) {
-            alert("Error updating recipe: " + error.message);
+      //     try {
+      //       const response = await fetch(
+      //         `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
+      //         {
+      //           method: "PUT",
+      //           headers: {
+      //             "Content-Type": "application/json",
+      //           },
+      //           body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
+      //         }
+      //       );
+      //       const data = await response.json();
+      //       console.log(data);
+      //     } catch (error) {
+      //       alert("Error updating recipe: " + error.message);
+      //     }
+      //   });
+      // document
+      //   .getElementById("delete-user")
+      //   .addEventListener("submit", async (e) => {
+      //     e.preventDefault();
+      //     const name = document.getElementById("delete-name").value;
+      //     const email = document.getElementById("delete-email").value;
+      //     try {
+      //       const response = await fetch(`/user/${name}/${email}`, {
+      //         method: "DELETE",
+      //       });
+      //       if (!response.ok) {
+      //         throw new Error("Problem fetching delete endpoint");
+      //       }
+      //       const data = await response.text();
+      //       console.log(data);
+      //     } catch (error) {
+      //       console.error(
+      //         "Uh oh, there was a a problem! " + error.message + "."
+      //       );
+      //     }
+      //   });
+
+      // async function fetchRecipes() {
+      //   try {
+      //     const response = await fetch('/recipes');
+      //     if (!response.ok) {
+      //       throw new Error("Error fetching recipes. Response not ok.");
+      //     }
+      //     const recipes = await response.json();
+      //     return recipes;
+      //   } catch(error) {
+      //     console.error("There was a problem.");
+      //     console.error(error);
+      //   }
+      // }  
+      
+      async function renderRecipe() {
+          const container = document.getElementById('container');
+          try{
+          const response = await fetch('/recipes');
+          if (response) {
+            alert("We're here");
           }
-        });
-      document
-        .getElementById("delete-user")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const name = document.getElementById("delete-name").value;
-          const email = document.getElementById("delete-email").value;
-          try {
-            const response = await fetch(`/user/${name}/${email}`, {
-              method: "DELETE",
-            });
-            if (!response.ok) {
-              throw new Error("Problem fetching delete endpoint");
-            }
-            const data = await response.text();
-            console.log(data);
-          } catch (error) {
-            console.error(
-              "Uh oh, there was a a problem! " + error.message + "."
-            );
+          const recipes = await response.json();
+          console.log("Recipes:" + recipes);
+          if(Array.isArray(recipes) && recipes.length > 0) {
+            recipes.forEach((recipe) => {
+              const recipeDiv = document.createElement('div');
+
+              const img = document.createElement("img");
+              // img.src = "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg";
+              img.src = recipe.img;
+
+              const title = document.createElement('p');
+              title.classList.add('legend');
+              title.textContent = recipe.food;
+
+              recipeDiv.appendChild(title);
+              recipeDiv.appendChild(img);
+              container.appendChild(recipeDiv);
+          });
           }
-        });
+      
+        } catch(error) {
+          console.error('Error fetching recipes:', error);
+        }
+        } 
+        window.onload = renderRecipe();
     </script>
   </body>
 </html>

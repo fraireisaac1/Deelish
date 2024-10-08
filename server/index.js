@@ -134,12 +134,13 @@ app.delete('/user/:name/:email', async (req, res) => {
 
 app.get('/recipes', async (req, res) => {
     try {
-        const data = await fs.readFile(recipesPath, 'uft8');
+        const data = await fs.readFile(recipesPath, 'utf8');
         
         const recipes = JSON.parse(data);
         if (!recipes) {
             throw new Error("Hey that's not a recipe!");
         }
+        console.log(recipes);
         res.status(200).json(recipes);
     } catch (error) {
         console.error("Problem getting recipes" + error.message);

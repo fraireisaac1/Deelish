@@ -31,3 +31,12 @@ Making all the pages link to one another for the website to feel cohesive. That 
 The prospect of implementing an account function sounds a bit daunting for us.
 ## What is 1 way you can support your team better moving forward?
 Maybe making sure that we all know how we can be helping eachother, and constantly informing each other of what we're doing so we avoid redundancy.
+
+# 10/7/2024
+
+## What is one idea/topic that you have had to revisit from last year while building your project?
+For me it'd have to be using local storage to display some elements onto the scree. Originally in the WBLA project I had to use this method, but not I'll use it a bit differently now that I need to help display an object, and not just an html element.
+## What is one real world reference web site that you have used to inspire you work on this project? What is it about that site that appeals to you?
+allrecipes.com was a site that we referenced for how we wanted our site to look. This site inspired Daniel to design the html for the landing page in a similar way, and the color scheme of our site was also inspired by the site.
+## Color Blindness and font size?
+We haven't considered this just yet, we implement it later.

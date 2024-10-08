@@ -22,7 +22,7 @@ app.get('/form', (req, res) => {
     res.sendFile('pages/form.html', { root: serverPublic });
 })
 
-app.get('/deelish', (req, res) => { 
+app.get('/deelish', (req, res) => {
     res.sendFile('pages/deelish.html', { root: serverPublic });
 });
 
@@ -71,6 +71,30 @@ app.post('/submit-form', async (req, res) => {
     } catch (error) {
         console.error('Error processing form: ', error);
         res.status(500).send('An error occurred while processing your submission.');
+    }
+});
+
+app.post('/sign-in', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Read users from the data file
+        const data = await fs.readFile(usersPath, 'utf8');
+        const users = JSON.parse(data);
+
+        // Find the user
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            // Return the user object
+            res.status(200).json(user);
+        } else {
+            // User not found
+            res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error during sign-in:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 
@@ -135,7 +159,7 @@ app.delete('/user/:name/:email/:password', async (req, res) => {
 app.get('/recipes', async (req, res) => {
     try {
         const data = await fs.readFile(recipesPath, 'uft8');
-        
+
         const recipes = JSON.parse(data);
         if (!recipes) {
             throw new Error("Hey that's not a recipe!");

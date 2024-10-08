@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Deelish | More Recipes, Less Stress</title>
-    <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/010/252/097/small_2x/delicious-dessert-cake-file-free-png.png">
 
     <style>
@@ -305,27 +304,29 @@ hr {
             alert("Error updating recipe: " + error.message);
           }
         });
-      document
-        .getElementById("delete-user")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const name = document.getElementById("delete-name").value;
-          const email = document.getElementById("delete-email").value;
-          try {
-            const response = await fetch(`/user/${name}/${email}`, {
-              method: "DELETE",
-            });
-            if (!response.ok) {
-              throw new Error("Problem fetching delete endpoint");
-            }
-            const data = await response.text();
-            console.log(data);
-          } catch (error) {
-            console.error(
-              "Uh oh, there was a a problem! " + error.message + "."
-            );
-          }
-        });
+
+      // DELETE RECIPE PROTOTYPE
+      // document
+      //   .getElementById("delete-user")
+      //   .addEventListener("submit", async (e) => {
+      //     e.preventDefault();
+      //     const name = document.getElementById("delete-name").value;
+      //     const email = document.getElementById("delete-email").value;
+      //     try {
+      //       const response = await fetch(`/user/${name}/${email}`, {
+      //         method: "DELETE",
+      //       });
+      //       if (!response.ok) {
+      //         throw new Error("Problem fetching delete endpoint");
+      //       }
+      //       const data = await response.text();
+      //       console.log(data);
+      //     } catch (error) {
+      //       console.error(
+      //         "Uh oh, there was a a problem! " + error.message + "."
+      //       );
+      //     }
+      //   });
     </script>
   </body>
 </html>

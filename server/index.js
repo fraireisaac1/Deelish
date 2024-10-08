@@ -128,7 +128,7 @@ app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, 
     }
 });
 
-app.delete('/user/:name/:email', async (req, res) => {
+app.delete('/user/:name/:email/:password', async (req, res) => {
     try {
         const { name, email } = req.params;
         let users = [];

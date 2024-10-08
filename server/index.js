@@ -225,30 +225,31 @@ app.put('/update-recipe/:currentFood/:currentImg/:currentIngredients/:currentAut
     }
 });
 
-app.delete('/recipe/:food/:author', async (req, res) => {
-    try {
-        const { food, author } = req.params;
-        let recipes = [];
-        try {
-            const data = await fs.readFile(recipesPath, 'utf8');
-            recipes = JSON.parse(data);
-        } catch (error) {
-            return res.status(404).send(`File data can't be found`);
-        }
-        const recipeIndex = recipes.findIndex(r => r.food === food && r.author === author);
-        if (recipeIndex === -1) {
-            return res.status(404).send('Recipe not found');
-        }
-        recipes.splice(recipeIndex, 1);
-        console.log(recipeIndex);
-        console.log(recipes);
-        try {
-            await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
-        } catch (error) {
-            res.status(500).send("There was a problem!!!");
-        }
-        return res.send('Nice you deleted this recipe');
-    } catch (error) {
-        console.error("there was an error");
-    }
-});
+// DELETE RECIPE PROTOTYPE
+// app.delete('/recipe/:food/:author', async (req, res) => {
+//     try {
+//         const { food, author } = req.params;
+//         let recipes = [];
+//         try {
+//             const data = await fs.readFile(recipesPath, 'utf8');
+//             recipes = JSON.parse(data);
+//         } catch (error) {
+//             return res.status(404).send(`File data can't be found`);
+//         }
+//         const recipeIndex = recipes.findIndex(r => r.food === food && r.author === author);
+//         if (recipeIndex === -1) {
+//             return res.status(404).send('Recipe not found');
+//         }
+//         recipes.splice(recipeIndex, 1);
+//         console.log(recipeIndex);
+//         console.log(recipes);
+//         try {
+//             await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
+//         } catch (error) {
+//             res.status(500).send("There was a problem!!!");
+//         }
+//         return res.send('Nice you deleted this recipe');
+//     } catch (error) {
+//         console.error("there was an error");
+//     }
+// });

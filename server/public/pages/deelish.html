@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deelish</title>
+    <title>Deelish | More Recipes, Less Stress</title>
     <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/010/252/097/small_2x/delicious-dessert-cake-file-free-png.png">
 
@@ -119,6 +119,16 @@ fieldset {
   position: relative;
   border: none;
   padding: 20px;
+  padding-left: 50px;
+}
+button[type="submit"] {
+  background-color: #29b2a0;
+  width: 150px;
+  height: 40px;
+  font-family: 'Lilita One';
+  color: white;
+  border: none;
+  border-radius: 40px;
 }
 h1 {
   text-align: center;
@@ -128,7 +138,6 @@ h1 {
   background-color: #046e94;
   padding: 10px;
   border-radius: 50px;
-
 }
 legend {
   position: absolute;
@@ -144,7 +153,11 @@ legend {
   align-content: center;
   border-radius: 50px;
 }
-
+hr {
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 5px;
+}
     </style>
   </head>
   <body>
@@ -221,7 +234,7 @@ legend {
           required
         ></textarea>
         <br /><br />
-        <input type="submit" value="Submit" />
+        <button type="submit">Submit Recipe</button>
       </fieldset>
     </form>
       <h1>Recipe Management</h1>

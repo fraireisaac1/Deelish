@@ -130,9 +130,9 @@
     	<div class="inner-box" id="card">
         	<div class="card-front">
             	<h2>SIGN IN</h2>
-                <form>
-                	<input type="email" class="input-box" placeholder="Your Email Id" required >
-                  <input type="password" class="input-box" placeholder="Password" required >
+                <form id="signInForm">
+                	<input type="email" class="input-box" id="signInEmail" placeholder="Your Email Id" required >
+                  <input type="password" class="input-box" id="signInPassword" placeholder="Password" required >
                   <button type="submit" class="submit-btn">Submit</button>
                   <input type="checkbox"><span>Remember Me</span>
                 </form>
@@ -184,6 +184,7 @@
                 <form id="delete-user">
                 	<input type="text" class="input-box" id="delete-name" placeholder="Name" required >
                   <input type="email" class="input-box" id="delete-email" placeholder="Email" required >
+                  <input type="password" class="input-box" id="delete-password" placeholder="Password" required >
                   <button type="submit" class="submit-btn">Delete</button>
                   <input type="checkbox"><span>Remember Me</span>
                 </form>
@@ -261,8 +262,9 @@
           e.preventDefault();
           const name = document.getElementById("delete-name").value;
           const email = document.getElementById("delete-email").value;
+          const password = document.getElementById("delete-password").value;
           try {
-            const response = await fetch(`/user/${name}/${email}`, {
+            const response = await fetch(`/user/${name}/${email}/${password}`, {
               method: "DELETE",
             });
             if (!response.ok) {
@@ -315,6 +317,46 @@
     		});
         });
     });  
+
+document
+        .getElementById("signInForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("signInEmail").value;
+          const password = document.getElementById("signInPassword").value;
+
+          try {
+            const response = await fetch("/sign-in", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, password }),
+            });
+
+            if (!response.ok) {
+              throw new Error("User not found");
+            }
+
+            const user = await response.json();
+
+            // Save user to local storage
+            localStorage.setItem("currentUser", JSON.stringify(user));
+
+            // Redirect to user-info page
+            window.location.href = "/deelish";
+          } catch (error) {
+            alert("Sign-In Failed: " + error.message);
+          }
+        });
+      document.addEventListener("DOMContentLoaded", renderUsers);
+      document.addEventListener("DOMContentLoaded", () => {
+        const currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+          // window.location.href = "/user-info";
+          window.location.href = "/deelish";
+        }
+      });
       </script>
     </div>
   </body>

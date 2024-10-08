@@ -191,7 +191,7 @@ app.put('/update-recipe/:currentFood/:currentImg/:currentIngredients/:currentAut
             }
             recipes[recipeIndex] = { ...recipes[recipeIndex], food: newFood, img: newImg, ingredients: newIngredients, author: newAuthor, instructions: newInstructions };
             console.log(recipes);
-            await fs.writeFile(recipesPath, JSON.stringify(users, null, 2));
+            await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
             res.status(200).json({ message: `You sent ${newFood}, ${newImg}, ${newIngredients}, ${newAuthor}, and ${newInstructions}` });
         }
     }

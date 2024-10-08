@@ -5,6 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Deelish</title>
     <link rel="stylesheet" href="../styling/styling.css" />
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/010/252/097/small_2x/delicious-dessert-cake-file-free-png.png">
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    "main main main main"
+    "footer footer footer footer";
+}
+#title {
+  position: absolute;
+  font-size: 40px;
+  margin: 10px;
+}
+nav > button {
+  grid-area: header;
+  color: white;
+  text-decoration: none;
+  font-family: "Arial";
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 40px;
+  border: none;
+  position: absolute;
+  top: 15px;
+}
+#about {
+  right: 20%;
+  background: none;
+}
+#register {
+  right: 10%;
+  background-color: #046e94;
+}
+#sign-in {
+  right: 2%;
+  background-color: #29b2a0;
+}
+.header {
+  grid-area: header;
+  position: relative;
+  background-color: #c36721;
+  font-family: "Lilita One";
+  color: white;
+  padding-left: 25px;
+  height: 70px;
+}
+.legend {
+  position: absolute;
+  top: -25px;
+  left: 50px;
+  background-color: #ffae42;
+  color: white;
+  height: 50px;
+  width: 200px;
+  align-content: center;
+  text-align: center;
+  font-family: "Arial";
+  font-size: 25px;
+  border-radius: 50px;
+  margin: auto;
+}
+.img {
+  text-align: center;
+  grid-area: main;
+  margin: 30px;
+  margin-bottom: 60px;
+  max-width: 100%;
+  align-items: center;
+}
+#i {
+  padding: 0;
+  margin: 0;
+  font-family: "Arial";
+  font-size: 50px;
+  position: absolute;
+  top: 10px;
+  right: 18%;
+}
+div.img > div {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 25px;
+  margin-top: 80px;
+  height: 100px;
+  width: 300px;
+}
+img {
+  width: 275px;
+}
+.big-img > img {
+  width: 1350px;
+  margin: 70px;
+}
+
+form {
+  background-color: #ffcc33;
+  border-radius: 50px;
+  margin: 10px;
+}
+fieldset {
+  position: relative;
+  border: none;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  margin: 50px;
+  font-family: 'Lilita One';
+  color: white;
+  background-color: #046e94;
+  padding: 10px;
+  border-radius: 50px;
+
+}
+legend {
+  position: absolute;
+  top: -25px;
+  left: 41%;
+  font-family: "Lilita One";
+  font-size: 30px;
+  background-color: #ffae42;
+  color: white;
+  width: 250px;
+  height: 50px;
+  text-align: center;
+  align-content: center;
+  border-radius: 50px;
+}
+
+    </style>
   </head>
   <body>
     <div class="grid">
@@ -31,7 +172,7 @@
             src="https://www.justonecookbook.com/wp-content/uploads/2023/09/Yakisoba-3464-V.jpg"
             alt=""
           />
-
+        </div>
         <div>
           <p class="legend">Tacos</p>
           <img
@@ -47,91 +188,76 @@
           />
         </div>
       </div>
-      <div class="big-img">
-        <img
-          src="https://www.shutterstock.com/image-photo/table-food-top-view-600nw-467823860.jpg"
-          alt=""
-        />
-        <div></div>
-      </div>
     </div>
     <form action="/submit-recipe" method="POST">
-      <h1>Latest Recipes</h1>
-      <label for="food">Recipe Title:</label>
-      <input type="text" id="food" name="food" required /><br /><br />
+      <fieldset>
 
-      <label for="img">Image of the Food:</label>
-      <input type="text" id="img" name="img" required/><br /><br />
-
-      <label for="author">Author:</label>
-      <input type="text" id="author" name="author" required /><br /><br />
-
-      <label for="ingredients">Ingredients Needed:</label>
-      <textarea
-        id="ingredients"
-        name="ingredients"
-        rows="2"
-        cols="15"
-        required
-      ></textarea>
-      <br /><br />
-
-      <label for="instructions">Instructions:</label>
-      <textarea
-        id="instructions"
-        name="instructions"
-        rows="2"
-        cols="15"
-        required
-      ></textarea>
-      <br /><br />
-      <input type="submit" value="Submit" />
-
+        <legend>Latest Recipes</legend>
+        <label for="food">Recipe Title:</label>
+        <input type="text" id="food" name="food" required /><br /><br />
+  
+        <label for="img">Image of the Food:</label>
+        <input type="text" id="img" name="img" required/><br /><br />
+  
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required /><br /><br />
+  
+        <label for="ingredients">Ingredients Needed:</label>
+        <textarea
+          id="ingredients"
+          name="ingredients"
+          rows="2"
+          cols="15"
+          required
+        ></textarea>
+        <br /><br />
+  
+        <label for="instructions">Instructions:</label>
+        <textarea
+          id="instructions"
+          name="instructions"
+          rows="2"
+          cols="15"
+          required
+        ></textarea>
+        <br /><br />
+        <input type="submit" value="Submit" />
+      </fieldset>
     </form>
-
       <h1>Recipe Management</h1>
-      <h2>Update Recipe</h2>
       <form id="updateForm">
-        <label for="currentFood">Current Food:</label>
-        <input type="text" id="currentFood" required /><br /><br />
-        <label for="currentImg">Current Image:</label>
-        <input type="text" id="currentImg" required /><br /><br />
-        <label for="currentIngredients">Current Ingredients:</label>
-        <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" required></textarea><br /><br />
-        <label for="currentAuthor">Current Author:<label>
-        <input type="text" id="currentAuthor" required /><br /><br />
-        <label for="currentInstructions">Current Instructions:</label>
-        <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" required></textarea><br /><br />
-        <hr></hr>
-        <label for="newFood">New Food:</label>
-        <input type="text" id="newFood" required /><br /><br />
-        <label for="newImg">New Image:</label>
-        <input type="text" id="newImg" required /><br /><br />
-        <label for="newIngredients">New Ingredients:</label>
-        <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" required></textarea><br /><br />
-        <label for="newAuthor">New Author:<label>
-        <input type="text" id="newAuthor" required /><br /><br />
-        <label for="newInstructions">New Instructions:</label>
-        <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" required></textarea><br /><br />
-        <button type="submit">Update Recipe</button>
-      </form>
-
-      <h2>Delete User</h2>
-      <form id="delete-user">
-        <label for="delete-name">Username:</label>
-        <input type="text" id="delete-name" /> <br /><br />
-        <label for="delete-email">Email:</label>
-        <input type="text" id="delete-email" /> <br /><br />
-        <button type="submit">Delete Account</button>
+        <fieldset>
+          <legend>Update Recipe</legend>
+          <label for="currentFood">Current Food:</label>
+          <input type="text" id="currentFood" required /><br /><br />
+          <label for="currentImg">Current Image:</label>
+          <input type="text" id="currentImg" required /><br /><br />
+          <label for="currentIngredients">Current Ingredients:</label>
+          <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" required></textarea><br /><br />
+          <label for="currentAuthor">Current Author:<label>
+          <input type="text" id="currentAuthor" required /><br /><br />
+          <label for="currentInstructions">Current Instructions:</label>
+          <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" required></textarea><br /><br />
+          <hr></hr>
+          <label for="newFood">New Food:</label>
+          <input type="text" id="newFood" required /><br /><br />
+          <label for="newImg">New Image:</label>
+          <input type="text" id="newImg" required /><br /><br />
+          <label for="newIngredients">New Ingredients:</label>
+          <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" required></textarea><br /><br />
+          <label for="newAuthor">New Author:<label>
+          <input type="text" id="newAuthor" required /><br /><br />
+          <label for="newInstructions">New Instructions:</label>
+          <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" required></textarea><br /><br />
+          <button type="submit">Update Recipe</button>
+        </fieldset>
       </form>
 
     <script>
       function redirectForm() {
         window.location.href = "form.html";
-        window.location.href = "form.html";
       }
       function redirectAbout() {
-        window.location.href = "about-us.html";
         window.location.href = "about-us.html";
       }
       document

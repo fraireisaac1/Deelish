@@ -225,7 +225,7 @@ legend {
       </fieldset>
     </form>
       <h1>Recipe Management</h1>
-      <form id="updateForm">
+      <form id="updateRecipe">
         <fieldset>
           <legend>Update Recipe</legend>
           <label for="currentFood">Current Food:</label>
@@ -261,7 +261,7 @@ legend {
         window.location.href = "about-us.html";
       }
       document
-        .getElementById("updateForm")
+        .getElementById("updateRecipe")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
           const currentFood = document.getElementById("currentFood").value;

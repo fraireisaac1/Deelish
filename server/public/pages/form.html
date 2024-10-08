@@ -184,6 +184,7 @@
                 <form id="delete-user">
                 	<input type="text" class="input-box" id="delete-name" placeholder="Name" required >
                   <input type="email" class="input-box" id="delete-email" placeholder="Email" required >
+                  <input type="password" class="input-box" id="delete-password" placeholder="Password" required >
                   <button type="submit" class="submit-btn">Delete</button>
                   <input type="checkbox"><span>Remember Me</span>
                 </form>
@@ -261,8 +262,9 @@
           e.preventDefault();
           const name = document.getElementById("delete-name").value;
           const email = document.getElementById("delete-email").value;
+          const password = document.getElementById("delete-password").value;
           try {
-            const response = await fetch(`/user/${name}/${email}`, {
+            const response = await fetch(`/user/${name}/${email}/${password}`, {
               method: "DELETE",
             });
             if (!response.ok) {

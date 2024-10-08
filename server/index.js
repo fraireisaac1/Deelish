@@ -167,7 +167,7 @@ app.get('/recipes', async (req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error("Problem getting recipes" + error.message);
-        res.status(500).json({ error: "Problem reading users" });
+        res.status(500).json({ error: "Problem reading recipe" });
     }
 });
 

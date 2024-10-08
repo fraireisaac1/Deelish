@@ -201,7 +201,7 @@ app.put('/update-recipe/:currentFood/:currentImg/:currentIngredients/:currentAut
     }
 });
 
-app.delete('/user/:food/:author', async (req, res) => {
+app.delete('/recipe/:food/:author', async (req, res) => {
     try {
         const { food, author } = req.params;
         let recipes = [];
@@ -219,7 +219,7 @@ app.delete('/user/:food/:author', async (req, res) => {
         console.log(recipeIndex);
         console.log(recipes);
         try {
-            await fs.writeFile(recipesPath, JSON.stringify(users, null, 2));
+            await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
         } catch (error) {
             res.status(500).send("There was a problem!!!");
         }

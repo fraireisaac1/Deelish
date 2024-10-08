@@ -344,16 +344,17 @@ document
             localStorage.setItem("currentUser", JSON.stringify(user));
 
             // Redirect to user-info page
-            window.location.href = "/user-info";
+            window.location.href = "/deelish";
           } catch (error) {
             alert("Sign-In Failed: " + error.message);
           }
         });
-      document.addEventListener("DOMContentLoaded");
+      document.addEventListener("DOMContentLoaded", renderUsers);
       document.addEventListener("DOMContentLoaded", () => {
         const currentUser = localStorage.getItem("currentUser");
         if (currentUser) {
-          window.location.href = "/user-info";
+          // window.location.href = "/user-info";
+          window.location.href = "/deelish";
         }
       });
       </script>

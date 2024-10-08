@@ -106,7 +106,7 @@ app.put('/update-user/:currentName/:currentEmail/:currentPassword', async (req, 
 
 app.delete('/user/:name/:email/:password', async (req, res) => {
     try {
-        const { name, email } = req.params;
+        const { name, email, password } = req.params;
         let users = [];
         try {
             const data = await fs.readFile(usersPath, 'utf8');
@@ -114,7 +114,7 @@ app.delete('/user/:name/:email/:password', async (req, res) => {
         } catch (error) {
             return res.status(404).send(`File data can't be found`);
         }
-        const userIndex = users.findIndex(user => user.name === name && user.email === email);
+        const userIndex = users.findIndex(user => user.name === name && user.email === email && user.password === password);
         if (userIndex === -1) {
             return res.status(404).send('User not found');
         }
@@ -126,7 +126,7 @@ app.delete('/user/:name/:email/:password', async (req, res) => {
         } catch (error) {
             res.status(500).send("There was a problem!!!");
         }
-        return res.send('Nice you deleted user');
+        return res.send('User have been deleted from the database');
     } catch (error) {
         console.error("there was an error");
     }

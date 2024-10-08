@@ -183,7 +183,7 @@ app.post('/submit-recipe', async (req, res) => {
             recipes = [];
         }
 
-        let recipe = recipes.find(u => u.food === food && u.img === img && u.ingredients === ingredients && u.author === author && u.instructions === instructions);
+        let recipe = recipes.find(r => r.food === food && r.img === img && r.ingredients === ingredients && r.author === author && r.instructions === instructions);
         if (recipe) {
             // something doesn't add up
             console.log(recipe)

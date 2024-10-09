@@ -100,14 +100,18 @@ nav > button:hover {
 }
 div.img > div {
   position: relative;
-  display: inline-block;
   text-align: center;
   margin: 25px;
   margin-top: 80px;
-  height: 100px;
-  width: 300px;
+  height: 275px;
+  width: 275px;
+}
+.recipe{
+  display: inline-block;
+  position: relative;
 }
 img {
+  height: 275px;
   width: 275px;
 }
 .big-img > img {
@@ -171,6 +175,14 @@ hr {
   border-radius: 20px;
   margin: 5px;
 }
+.infoDiv{
+  border: 1px solid yellow;
+  height: 275px;
+  width: 275px;
+}
+.author{
+  margin-top: 35px;
+}
     </style>
   </head>
   <body>
@@ -185,7 +197,7 @@ hr {
         </nav>
       </div>
       <div class="img" id ="container">
-        <div class="recipe">
+        <!-- <div class="recipe">
           <p class="legend">Cake</p>
           <img
             src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
@@ -212,7 +224,7 @@ hr {
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
             alt=""
           />
-        </div>
+        </div> -->
       </div>
     </div>
     <form action="/submit-recipe" method="POST">
@@ -358,16 +370,21 @@ hr {
           const container = document.getElementById('container');
           try{
           const response = await fetch('/recipes');
-          if (response) {
-            alert("We're here");
-          }
+      
           const recipes = await response.json();
           console.log("Recipes:" + recipes);
           if(Array.isArray(recipes) && recipes.length > 0) {
             recipes.forEach((recipe) => {
               const recipeDiv = document.createElement('div');
               recipeDiv.classList.add('recipe');
-              // const infoDiv = document.createElement('div');
+              const infoDiv = document.createElement('div');
+              infoDiv.classList.add('recipe');
+              infoDiv.classList.add('infoDiv');
+              infoDiv.style.display = "none"; 
+              infoDiv.style.position = "absolute"; 
+              infoDiv.style.top = "0"; 
+              infoDiv.style.left = "0"; 
+
 
               const img = document.createElement("img");
               // img.src = "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg";
@@ -377,25 +394,42 @@ hr {
               title.classList.add('legend');
               title.textContent = recipe.food;
 
-              // const author = document.createElement('p');
-              // title.classList.add('author');
-              // title.textContent = recipe.author;
+              const infoTitle = document.createElement('p');
+              infoTitle.classList.add('legend');
+              infoTitle.textContent = recipe.food;
 
-              // const ingredients = document.createElement('p');
-              // title.classList.add('ingredients');
-              // title.textContent = recipe.ingredients;
+              const author = document.createElement('p');
+              author.classList.add('author');
+              author.textContent = "Author: " + recipe.author;
 
-              // const instructions = document.createElement('p');
-              // title.classList.add('instructions');
-              // title.textContent = recipe.instructions;
+              const ingredients = document.createElement('p');
+              ingredients.classList.add('ingredients');
+              ingredients.textContent = "Ingredients: " + recipe.ingredients;
+
+              const instructions = document.createElement('p');
+              instructions.classList.add('instructions');
+              instructions.textContent = "Instructions: " + recipe.instructions;
 
               recipeDiv.appendChild(title);
               recipeDiv.appendChild(img);
               container.appendChild(recipeDiv);
-              // infoDiv.appendChild(author);
-              // infoDiv.appendChild(ingredients);
-              // infoDiv.appendChild(instructions);
-              // container.appendChild(infoDiv);
+              infoDiv.appendChild(infoTitle);
+              infoDiv.appendChild(author);
+              infoDiv.appendChild(ingredients);
+              infoDiv.appendChild(instructions);
+              recipeDiv.appendChild(infoDiv);
+
+              recipeDiv.addEventListener('click', ()=> {
+                if(img.style.display === "none"){
+                  infoDiv.style.display = "none"; 
+                  img.style.display = "inline-block";
+                } else{
+                  img.style.display = "none"; 
+                  infoDiv.style.display = "inline-block";
+                }
+                
+              })
+
           });
           }
       

@@ -26,5 +26,12 @@
     "ingredients": "Blah Blah",
     "author": "Gabriel",
     "instructions": "Blah Blah"
+  },
+  {
+    "food": "Chicken Alfredo",
+    "img": "https://media.istockphoto.com/id/612246764/photo/pasta-with-chicken.jpg?s=612x612&w=0&k=20&c=c_gZbA4DXcLGWLng58D2B9Od_do4xpGe1JXyUjstz0A=",
+    "ingredients": "blah blah blah",
+    "author": "Isaac",
+    "instructions": "bababooy"
   }
 ]

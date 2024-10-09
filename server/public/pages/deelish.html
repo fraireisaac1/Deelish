@@ -301,45 +301,61 @@ hr {
           const newAuthor = document.getElementById("newAuthor").value;
           const newInstructions = document.getElementById("newInstructions").value;
 
-          try {
+          // try {
+          //   const response = await fetch(
+          //     `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
+          //     {
+          //       method: "PUT",
+          //       headers: {
+          //         "Content-Type": "application/json",
+          //       },
+          //       body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
+          //     }
+          //   );
+          //   // console.log(response);
+          //   const data = await response.json();
+          //   console.log(data);
+          // } catch (error) {
+          //   alert("Note -- Error updating recipe: " + error.message);
+          // }
+            try {
             const response = await fetch(
-              `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
+              `/update-recipe/${currentFood}/${currentAuthor}`,
+
               {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
+                body: JSON.stringify({currentImg, currentIngredients, currentInstructions, newFood, newImg, newIngredients, newAuthor, newInstructions }),
               }
             );
-            // console.log(response);
             const data = await response.json();
-            console.log(data);
-          } catch (error) {
-            alert("Note -- Error updating recipe: " + error.message);
-          }
-        });
-      document
-        .getElementById("delete-user")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const name = document.getElementById("delete-name").value;
-          const email = document.getElementById("delete-email").value;
-          try {
-            const response = await fetch(`/user/${name}/${email}`, {
-              method: "DELETE",
-            });
-            if (!response.ok) {
-              throw new Error("Problem fetching delete endpoint");
+            } catch(error) {
+              console.error("There was a problem fetching the recipe.");
             }
-            const data = await response.text();
-            console.log(data);
-          } catch (error) {
-            console.error(
-              "Uh oh, there was a a problem! " + error.message + "."
-            );
-          }
         });
+      // document
+      //   .getElementById("delete-user")
+      //   .addEventListener("submit", async (e) => {
+      //     e.preventDefault();
+      //     const name = document.getElementById("delete-name").value;
+      //     const email = document.getElementById("delete-email").value;
+      //     try {
+      //       const response = await fetch(`/user/${name}/${email}`, {
+      //         method: "DELETE",
+      //       });
+      //       if (!response.ok) {
+      //         throw new Error("Problem fetching delete endpoint");
+      //       }
+      //       const data = await response.text();
+      //       console.log(data);
+      //     } catch (error) {
+      //       console.error(
+      //         "Uh oh, there was a a problem! " + error.message + "."
+      //       );
+      //     }
+      //   });
 
       async function fetchRecipes() {
         try {

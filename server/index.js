@@ -201,24 +201,44 @@ app.post('/submit-recipe', async (req, res) => {
     }
 });
 
-app.put('/update-recipe/:currentImg/:currentFood/:currentIngredients/:currentAuthor/:currentInstructions', async (req, res) => {
+//app.put('/update-recipe/:currentImg/:currentFood/:currentIngredients/:currentAuthor/:currentInstructions', async (req, res) => {
+    // try {
+    //     console.log(req.params);
+    //     const { currentFood, currentImg, currentIngredients, currentAuthor, currentInstructions } = req.params;
+    //     const { newFood, newImg, newIngredients, newAuthor, newInstructions } = req.body;
+    //     // console.log('Current user:', { currentName, currentEmail });
+    //     // console.log('New user data:', { newName, newEmail, newPassword });
+    //     const data = await fs.readFile(recipesPath, 'utf8');
+    //     if (data) {
+    //         let recipes = JSON.parse(data);
+    //         const recipeIndex = recipes.findIndex(r => r.food === currentFood && r.img === currentImg && r.ingredients === currentIngredients && r.author === currentAuthor && r.instructions === currentInstructions);
+    //         if (recipeIndex === -1) {
+    //             return res.status(404).json({ message: "Recipe not found" });
+    //         }
+    //         recipes[recipeIndex] = { ...recipes[recipeIndex], food: newFood, img: newImg, ingredients: newIngredients, author: newAuthor, instructions: newInstructions };
+    //         console.log(recipes);
+    //         await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
+    //         res.status(200).json({ message: `You sent ${newFood}, ${newImg}, ${newIngredients}, ${newAuthor}, and ${newInstructions}` });
+    //     }
+    // }
+app.put('/update-recipe/:currentFood/:currentAuthor', async (req, res) => {
     try {
-        console.log(req.params);
-        const { currentFood, currentImg, currentIngredients, currentAuthor, currentInstructions } = req.params;
-        const { newFood, newImg, newIngredients, newAuthor, newInstructions } = req.body;
+
+        const { currentFood, currentAuthor } = req.params;
+        const { currentImg, currentIngredients, currentInstructions, newFood, newImg, newIngredients, newAuthor, newInstructions } = req.body;
         // console.log('Current user:', { currentName, currentEmail });
         // console.log('New user data:', { newName, newEmail, newPassword });
+        console.log(currentFood);
+        console.log(currentAuthor);
         const data = await fs.readFile(recipesPath, 'utf8');
         if (data) {
             let recipes = JSON.parse(data);
-            const recipeIndex = recipes.findIndex(r => r.food === currentFood && r.img === currentImg && r.ingredients === currentIngredients && r.author === currentAuthor && r.instructions === currentInstructions);
+            const recipeIndex = recipes.findIndex(r => r.food === currentFood && r.author === currentAuthor);
             if (recipeIndex === -1) {
                 return res.status(404).json({ message: "Recipe not found" });
             }
             recipes[recipeIndex] = { ...recipes[recipeIndex], food: newFood, img: newImg, ingredients: newIngredients, author: newAuthor, instructions: newInstructions };
             console.log(recipes);
-            await fs.writeFile(recipesPath, JSON.stringify(recipes, null, 2));
-            res.status(200).json({ message: `You sent ${newFood}, ${newImg}, ${newIngredients}, ${newAuthor}, and ${newInstructions}` });
         }
     }
     catch (error) {

@@ -38,6 +38,12 @@ nav > button {
   border: none;
   position: absolute;
   top: 15px;
+  
+}
+nav > button:hover {
+  cursor: pointer;
+  filter: brightness(80%);
+  transition: all 1s ease;
 }
 #about {
   right: 20%;
@@ -127,6 +133,9 @@ button[type="submit"] {
   border: none;
   border-radius: 40px;
 }
+button:hover{
+  cursor: pointer;
+}
 h1 {
   text-align: center;
   margin: 50px;
@@ -135,6 +144,11 @@ h1 {
   background-color: #046e94;
   padding: 10px;
   border-radius: 50px;
+}
+.recipe:hover{
+  cursor: pointer;
+  filter: brightness(80%);
+  transition: all 1s ease;
 }
 legend {
   position: absolute;
@@ -168,29 +182,29 @@ hr {
           <button onclick="redirectForm()" id="sign-in">Sign In</button>
         </nav>
       </div>
-      <div class="img">
-        <div class="inner">
+      <div class="img" id ="container">
+        <div class="recipe">
           <p class="legend">Cake</p>
           <img
             src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
             alt=""
           />
         </div>
-        <div class="inner">
+        <div class="recipe">
           <p class="legend">Yakisoba</p>
           <img
             src="https://www.justonecookbook.com/wp-content/uploads/2023/09/Yakisoba-3464-V.jpg"
             alt=""
           />
         </div>
-        <div class="inner">
+        <div class="recipe">
           <p class="legend">Tacos</p>
           <img
             src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/Carne-Asada-Tacos-3.jpg"
             alt=""
           />
         </div>  
-        <div class="inner">
+        <div class="recipe">
           <p class="legend">Pizza</p>
           <img
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
@@ -308,25 +322,24 @@ hr {
           } catch (error) {
             alert("Error updating recipe: " + error.message);
           }
-      document
-        .getElementById("delete-user")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const name = document.getElementById("delete-name").value;
-          const email = document.getElementById("delete-email").value;
-          try {
-            const response = await fetch(`/user/${name}/${email}`, {
-              method: "DELETE",
-            });
-            if (!response.ok) {
-              throw new Error("Problem fetching delete endpoint");
-            }
-            const data = await response.text();
-            console.log(data);
-          } catch (error) {
-            console.error(
-              "Uh oh, there was a a problem! " + error.message + "."
-            );
+          const recipes = await response.json();
+          console.log("Recipes:" + recipes);
+          if(Array.isArray(recipes) && recipes.length > 0) {
+            recipes.forEach((recipe) => {
+              const recipeDiv = document.createElement('div');
+              recipeDiv.classList.add('recipe');
+
+              const img = document.createElement("img");
+              img.src = recipe.img;
+
+              const title = document.createElement('p');
+              title.classList.add('legend');
+              title.textContent = recipe.food;
+
+              recipeDiv.appendChild(title);
+              recipeDiv.appendChild(img);
+              container.appendChild(recipeDiv);
+          });
           }
         })
         window.onload = renderRecipe();

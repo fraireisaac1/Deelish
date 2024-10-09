@@ -33,5 +33,12 @@
     "ingredients": "blah blah blah",
     "author": "Daniel",
     "instructions": "blah blah"
+  },
+  {
+    "food": "Lasagna",
+    "img": "https://cdn.pixabay.com/photo/2022/11/08/05/34/lasagna-7577748_1280.jpg",
+    "ingredients": "Some ingredients",
+    "author": "Isaac",
+    "instructions": "Some Instructions"
   }
 ]

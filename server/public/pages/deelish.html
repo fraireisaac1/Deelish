@@ -359,7 +359,8 @@ hr {
           try{
           const response = await fetch('/recipes');
           if (response) {
-            alert("We're here");
+            // alert("We're here");
+            console.log("Recipe Response")
           }
           const recipes = await response.json();
           console.log("Recipes:" + recipes);

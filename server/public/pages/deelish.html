@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Deelish</title>
-    <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/010/252/097/small_2x/delicious-dessert-cake-file-free-png.png">
 
     <style>
@@ -93,7 +92,10 @@ nav > button {
   top: 10px;
   right: 18%;
 }
-div.img > div {
+#dycon {
+  margin-top: 35%;
+}
+.inner {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -105,11 +107,6 @@ div.img > div {
 img {
   width: 275px;
 }
-.big-img > img {
-  width: 1350px;
-  margin: 70px;
-}
-
 form {
   background-color: #ffcc33;
   border-radius: 50px;
@@ -159,34 +156,37 @@ legend {
         </nav>
       </div>
       <div class="img">
-        <div>
+        <div class="inner">
           <p class="legend">Cake</p>
           <img
             src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div class="inner">
           <p class="legend">Yakisoba</p>
           <img
             src="https://www.justonecookbook.com/wp-content/uploads/2023/09/Yakisoba-3464-V.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div class="inner">
           <p class="legend">Tacos</p>
           <img
             src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/Carne-Asada-Tacos-3.jpg"
             alt=""
           />
         </div>  
-        <div>
+        <div class="inner">
           <p class="legend">Pizza</p>
           <img
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
             alt=""
           />
         </div>
+      </div>
+      <div id="dycon" class="img">
+        <!-- Dynamically Created Content. -->
       </div>
     </div>
     <form action="/submit-recipe" method="POST">
@@ -221,37 +221,37 @@ legend {
           required
         ></textarea>
         <br /><br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" onclick="create()" />
       </fieldset>
     </form>
-      <h1>Recipe Management</h1>
-      <form id="updateForm">
-        <fieldset>
-          <legend>Update Recipe</legend>
-          <label for="currentFood">Current Food:</label>
-          <input type="text" id="currentFood" required /><br /><br />
-          <label for="currentImg">Current Image:</label>
-          <input type="text" id="currentImg" required /><br /><br />
-          <label for="currentIngredients">Current Ingredients:</label>
-          <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" required></textarea><br /><br />
-          <label for="currentAuthor">Current Author:<label>
-          <input type="text" id="currentAuthor" required /><br /><br />
-          <label for="currentInstructions">Current Instructions:</label>
-          <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" required></textarea><br /><br />
-          <hr></hr>
-          <label for="newFood">New Food:</label>
-          <input type="text" id="newFood" required /><br /><br />
-          <label for="newImg">New Image:</label>
-          <input type="text" id="newImg" required /><br /><br />
-          <label for="newIngredients">New Ingredients:</label>
-          <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" required></textarea><br /><br />
-          <label for="newAuthor">New Author:<label>
-          <input type="text" id="newAuthor" required /><br /><br />
-          <label for="newInstructions">New Instructions:</label>
-          <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" required></textarea><br /><br />
-          <button type="submit">Update Recipe</button>
-        </fieldset>
-      </form>
+    <h1>Recipe Management</h1>
+    <form id="updateForm">
+      <fieldset>
+        <legend>Update Recipe</legend>
+        <label for="currentFood">Current Food:</label>
+        <input type="text" id="currentFood" required /><br /><br />
+        <label for="currentImg">Current Image:</label>
+        <input type="text" id="currentImg" required /><br /><br />
+        <label for="currentIngredients">Current Ingredients:</label>
+        <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" required></textarea><br /><br />
+        <label for="currentAuthor">Current Author:<label>
+        <input type="text" id="currentAuthor" required /><br /><br />
+        <label for="currentInstructions">Current Instructions:</label>
+        <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" required></textarea><br /><br />
+        <hr />
+        <label for="newFood">New Food:</label>
+        <input type="text" id="newFood" required /><br /><br />
+        <label for="newImg">New Image:</label>
+        <input type="text" id="newImg" required /><br /><br />
+        <label for="newIngredients">New Ingredients:</label>
+        <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" required></textarea><br /><br />
+        <label for="newAuthor">New Author:<label>
+        <input type="text" id="newAuthor" required /><br /><br />
+        <label for="newInstructions">New Instructions:</label>
+        <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" required></textarea><br /><br />
+        <button type="submit">Update Recipe</button>
+      </fieldset>
+    </form>
 
     <script>
       function redirectForm() {
@@ -288,10 +288,28 @@ legend {
             );
             const data = await response.json();
             console.log(data);
+            create(currentFood, currentImg)
           } catch (error) {
             alert("Error updating recipe: " + error.message);
           }
         });
+
+        const full = document.getElementById('dycon');
+        //
+        function create(text, url) {
+          let div = document.createElement('div')
+          let p = document.createElement('p');
+          let img = document.createElement('img');
+          //
+          div.classList.add('inner');
+          p.classList.add('legend');
+          p.textContent = text;
+          img.src = url;
+          //
+          div.appendChild(p);
+          div.appendChild(img);
+          full.appendChild(div);
+       }
       document
         .getElementById("delete-user")
         .addEventListener("submit", async (e) => {
@@ -313,6 +331,8 @@ legend {
             );
           }
         });
+    </script>
+    <script>
     </script>
   </body>
 </html>

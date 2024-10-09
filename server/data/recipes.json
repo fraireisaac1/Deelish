@@ -1,10 +1,10 @@
 [
   {
-    "food": "Taco",
-    "img": "https://cdn.pixabay.com/photo/2023/07/24/17/09/mexican-8147497_1280.png",
-    "ingredients": "Bla",
-    "author": "LeBron",
-    "instructions": "Taco Tuesday!"
+    "food": "Chicken Wings",
+    "img": "https://media.istockphoto.com/id/835903320/photo/baked-chicken-wings-with-sesame-seeds-and-sweet-chili-sauce-on-white-wooden-board.jpg?s=612x612&w=0&k=20&c=SH8ZCkEKuWD_wxulpntIJ0uD4yRnUf9UXovQwSwrmmA=",
+    "ingredients": "blah blah",
+    "author": "Daniel",
+    "instructions": "blah blah"
   },
   {
     "food": "Hot Dogs",
@@ -26,5 +26,12 @@
     "ingredients": "Blah Blah",
     "author": "Gabriel",
     "instructions": "Blah Blah"
+  },
+  {
+    "food": "Chicken Alfredo",
+    "img": "https://www.shutterstock.com/image-photo/fettuccine-alfredo-chicken-served-bowl-600nw-2502135175.jpg",
+    "ingredients": "blah blah blah",
+    "author": "Daniel",
+    "instructions": "blah blah"
   }
 ]

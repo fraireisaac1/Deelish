@@ -103,14 +103,18 @@ nav > button:hover {
 }
 .recipe {
   position: relative;
-  display: inline-block;
   text-align: center;
   margin: 25px;
   margin-top: 80px;
-  height: 100px;
-  width: 300px;
+  height: 275px;
+  width: 275px;
+}
+.recipe{
+  display: inline-block;
+  position: relative;
 }
 img {
+  height: 275px;
   width: 275px;
 }
 form {
@@ -169,6 +173,14 @@ hr {
   border-radius: 20px;
   margin: 5px;
 }
+.infoDiv{
+  border: 1px solid yellow;
+  height: 275px;
+  width: 275px;
+}
+.author{
+  margin-top: 35px;
+}
     </style>
   </head>
   <body>
@@ -183,7 +195,7 @@ hr {
         </nav>
       </div>
       <div class="img" id ="container">
-        <div class="recipe">
+        <!-- <div class="recipe">
           <p class="legend">Cake</p>
           <img
             src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
@@ -210,14 +222,11 @@ hr {
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
             alt=""
           />
-        </div>
+        </div> -->
       </div>
       <div id="dycon" class="img">
         <!-- Dynamically Created Content. -->
       </div>
-    </div>
-    <div id="dycon">
-      <!-- Dynamically Created Content. -->
     </div>
     <form action="/submit-recipe" method="POST">
       <fieldset>
@@ -260,14 +269,14 @@ hr {
           <legend>Update Recipe</legend>
           <label for="currentFood">Current Food:</label>
           <input type="text" id="currentFood" value="Cookies"/><br /><br />
-          <label for="currentImg">Current Image:</label>
-          <input type="text" id="currentImg"  value=""/><br /><br />
-          <label for="currentIngredients">Current Ingredients:</label>
-          <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" ></textarea><br /><br />
-          <label for="currentAuthor">Current Author:<label>
+          <label for="currentImg" style="display: none;">Current Image:</label>
+          <input type="text" id="currentImg" style="display: none;" value=""/><br /><br />
+          <label for="currentIngredients" style="display: none;">Current Ingredients:</label>
+          <textarea id="currentIngredients" name="currentIngredients" style="display: none;" rows="2" cols="15" ></textarea><br /><br />
+          <label for="currentAuthor" >Current Author:<label>
           <input type="text" id="currentAuthor"  /><br /><br />
-          <label for="currentInstructions">Current Instructions:</label>
-          <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" ></textarea><br /><br />
+          <label for="currentInstructions" style="display: none;">Current Instructions:</label>
+          <textarea id="currentInstructions" name="currentInstructions" style="display: none;" rows="2" cols="15" ></textarea><br /><br />
           <hr></hr>
           <label for="newFood">New Food:</label>
           <input type="text" id="newFood"  /><br /><br />
@@ -284,7 +293,7 @@ hr {
       </form>
 
     <script>
-      function redirectForm() {
+     function redirectForm() {
         window.location.href = "/form";
       }
       function redirectAbout() {
@@ -305,6 +314,27 @@ hr {
           const newAuthor = document.getElementById("newAuthor").value;
           const newInstructions = document.getElementById("newInstructions").value;
 
+          // try {
+          //   const response = await fetch(
+          //     `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
+          //     {
+          //       method: "PUT",
+          //       headers: {
+          //         "Content-Type": "application/json",
+          //       },
+          //       body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
+          //     }
+          //   );
+          //   // console.log(response);
+          //   const data = await response.json();
+          //   console.log(data);
+          // } catch (error) {
+          //   alert("Note -- Error updating recipe: " + error.message);
+          // }
+            try {
+            const response = await fetch(
+              `/update-recipe/${currentFood}/${currentAuthor}`,
+
           try {
             const response = await fetch(
               `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
@@ -313,6 +343,59 @@ hr {
                 headers: {
                   "Content-Type": "application/json",
                 },
+                body: JSON.stringify({currentImg, currentIngredients, currentInstructions, newFood, newImg, newIngredients, newAuthor, newInstructions }),
+              }
+            );
+            console.log("it worked!");
+            alert('You updated the recipe!');
+            const data = await response.json();
+            } catch(error) {
+              console.error("There was a problem fetching the recipe.");
+            }
+        });
+      // document
+      //   .getElementById("delete-user")
+      //   .addEventListener("submit", async (e) => {
+      //     e.preventDefault();
+      //     const name = document.getElementById("delete-name").value;
+      //     const email = document.getElementById("delete-email").value;
+      //     try {
+      //       const response = await fetch(`/user/${name}/${email}`, {
+      //         method: "DELETE",
+      //       });
+      //       if (!response.ok) {
+      //         throw new Error("Problem fetching delete endpoint");
+      //       }
+      //       const data = await response.text();
+      //       console.log(data);
+      //     } catch (error) {
+      //       console.error(
+      //         "Uh oh, there was a a problem! " + error.message + "."
+      //       );
+      //     }
+      //   });
+
+      async function fetchRecipes() {
+        try {
+          const response = await fetch('/recipes');
+          if (!response.ok) {
+            throw new Error("Error fetching recipes. Response not ok.");
+          }
+          const recipes = await response.json();
+          return recipes;
+        } catch(error) {
+          console.error("There was a problem.");
+          console.error(error);
+        }
+      }  
+      
+      async function renderRecipe() {
+          const container = document.getElementById('container');
+          try{
+          const response = await fetch('/recipes');
+          if (response) {
+            // alert("We're here");
+            console.log("Recipe Response")
                 body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
               }
             );
@@ -328,17 +411,59 @@ hr {
             recipes.forEach((recipe) => {
               const recipeDiv = document.createElement('div');
               recipeDiv.classList.add('recipe');
+              const infoDiv = document.createElement('div');
+              infoDiv.classList.add('recipe');
+              infoDiv.classList.add('infoDiv');
+              infoDiv.style.display = "none"; 
+              infoDiv.style.position = "absolute"; 
+              infoDiv.style.top = "0"; 
+              infoDiv.style.left = "0"; 
+
 
               const img = document.createElement("img");
+              // img.src = "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg";
               img.src = recipe.img;
 
               const title = document.createElement('p');
               title.classList.add('legend');
               title.textContent = recipe.food;
 
+              const infoTitle = document.createElement('p');
+              infoTitle.classList.add('legend');
+              infoTitle.textContent = recipe.food;
+
+              const author = document.createElement('p');
+              author.classList.add('author');
+              author.textContent = "Author: " + recipe.author;
+
+              const ingredients = document.createElement('p');
+              ingredients.classList.add('ingredients');
+              ingredients.textContent = "Ingredients: " + recipe.ingredients;
+
+              const instructions = document.createElement('p');
+              instructions.classList.add('instructions');
+              instructions.textContent = "Instructions: " + recipe.instructions;
+
               recipeDiv.appendChild(title);
               recipeDiv.appendChild(img);
               container.appendChild(recipeDiv);
+              infoDiv.appendChild(infoTitle);
+              infoDiv.appendChild(author);
+              infoDiv.appendChild(ingredients);
+              infoDiv.appendChild(instructions);
+              recipeDiv.appendChild(infoDiv);
+
+              recipeDiv.addEventListener('click', ()=> {
+                if(img.style.display === "none"){
+                  infoDiv.style.display = "none"; 
+                  img.style.display = "inline-block";
+                } else{
+                  img.style.display = "none"; 
+                  infoDiv.style.display = "inline-block";
+                }
+                
+              })
+
           });
           }
           window.onload = renderRecipe();

@@ -27,3 +27,11 @@
 3. The `position:` thing, because I'm having to use it, and I sometimes forget which either `absolute` or `relative` does.
 
 4. Actually speaking and being more communicative because I haven't spoken as much recently.
+
+### Day 5
+
+1. Most of the things I have had to really rack my brain for, surprisingly is basic CSS. Simply because it's been some time since we've done CSS, but I got it all sorted out.
+
+2. I've been getting this mostly off my mind, but I did visit a single website for about half a minute just to get title ideas, and that was [allrecipes](https://www.allrecipes.com/).
+
+3. No, I haven't exactly thought about much of that. Honestly, it never crossed my mind whatsoever. I'd say it's already pretty color-blind friendly with how the color scheme looks, but I might just research a tad on that.

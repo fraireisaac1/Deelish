@@ -10,6 +10,7 @@ I hope to get a prototype of the website done tomorrow, not visually appealing b
 ##### What was your biggest challenge today?
 N/A, I did not struggle with anything and we had a strong start today.
 
+
 ### Day 2, 10/2/2024 Journal Entry
 ##### What new challenge arose today?
 Some minor push/pull issues got in our way but we managed to get past it.
@@ -17,3 +18,20 @@ Some minor push/pull issues got in our way but we managed to get past it.
 I am using W3Schools for some help on some parts of the project.
 ##### What is 1 resource you are using to collaborate better with your teammates?
 The develop branch helped us tremendously in our team coordination since we had issues with pushing and pulling previously.
+
+
+### Day 3, 10/3/2024 Journal Entry
+##### PLACEHOLDER
+
+
+### Day 4, 10/4/2024 Journal Entry
+I was absent and did not attend school today.
+
+
+### Day 5, 10/5/2024
+##### What is one idea/topic that you have had to revisit from last year while building your project?
+We had to revisit CSS lessons from last year
+##### What is one real world reference web site that you have used to inspire your work on this project? What is it about the site that appeals you?
+We used allrecipes.com as our reference for format and general inspiration
+##### Have you thought about colors and font-size on your website?
+No we have not thought about that currently.

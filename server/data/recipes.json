@@ -14,6 +14,7 @@
     "instructions": "blah"
   },
   {
+<<<<<<< HEAD
     "food": "e",
     "img": "e",
     "ingredients": "e",
@@ -61,5 +62,19 @@
     "ingredients": "e",
     "author": "Me",
     "instructions": "e"
+=======
+    "food": "Cookies",
+    "img": "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSeT3WvZ46k-_UlRaUaG_d9CDk04eZ26ZzYRl7dl-g1dUEzNoxFnUDJSHGnLtiYdqJ6",
+    "ingredients": "Blah",
+    "author": "Gabriel",
+    "instructions": "Blah"
+  },
+  {
+    "food": "Not cookies",
+    "img": "https://3.bp.blogspot.com/-okeaImTxP6g/TeZPKv7nlKI/AAAAAAAAARo/zdMaRZGrryo/s640/Apri2011+049pwm.jpg",
+    "ingredients": "Blah Blah",
+    "author": "Gabriel",
+    "instructions": "Blah Blah"
+>>>>>>> 512e5c1531ef7b9783de397652149453dd7f61dd
   }
 ]

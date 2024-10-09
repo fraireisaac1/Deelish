@@ -241,28 +241,28 @@ hr {
         <fieldset>
           <legend>Update Recipe</legend>
           <label for="currentFood">Current Food:</label>
-          <input type="text" id="currentFood" required /><br /><br />
+          <input type="text" id="currentFood" value="Cookies"/><br /><br />
           <label for="currentImg">Current Image:</label>
-          <input type="text" id="currentImg" required /><br /><br />
+          <input type="text" id="currentImg"  value=""/><br /><br />
           <label for="currentIngredients">Current Ingredients:</label>
-          <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" required></textarea><br /><br />
+          <textarea id="currentIngredients" name="currentIngredients" rows="2" cols="15" ></textarea><br /><br />
           <label for="currentAuthor">Current Author:<label>
-          <input type="text" id="currentAuthor" required /><br /><br />
+          <input type="text" id="currentAuthor"  /><br /><br />
           <label for="currentInstructions">Current Instructions:</label>
-          <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" required></textarea><br /><br />
+          <textarea id="currentInstructions" name="currentInstructions" rows="2" cols="15" ></textarea><br /><br />
           <hr></hr>
           <label for="newFood">New Food:</label>
-          <input type="text" id="newFood" required /><br /><br />
+          <input type="text" id="newFood"  /><br /><br />
           <label for="newImg">New Image:</label>
-          <input type="text" id="newImg" required /><br /><br />
+          <input type="text" id="newImg"  /><br /><br />
           <label for="newIngredients">New Ingredients:</label>
-          <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" required></textarea><br /><br />
+          <textarea id="newIngredients" name="newIngredients" rows="2" cols="15" ></textarea><br /><br />
           <label for="newAuthor">New Author:<label>
-          <input type="text" id="newAuthor" required /><br /><br />
+          <input type="text" id="newAuthor"  /><br /><br />
           <label for="newInstructions">New Instructions:</label>
-          <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" required></textarea><br /><br />
-          <button type="submit">Update Recipe</button>
+          <textarea id="newInstructions" name="newInstructions" rows="2" cols="15" ></textarea><br /><br />
         </fieldset>
+        <button type="submit">Update Recipe</button>
       </form>
 
     <script>
@@ -272,73 +272,74 @@ hr {
       function redirectAbout() {
         window.location.href = "/about";
       }
-      // document
-      //   .getElementById("updateRecipe")
-      //   .addEventListener("submit", async (e) => {
-      //     e.preventDefault();
-      //     const currentFood = document.getElementById("currentFood").value;
-      //     const currentImg = document.getElementById("currentImg").value;
-      //     const currentIngredients = document.getElementById("currentIngredients").value;
-      //     const currentAuthor = document.getElementById("currentAuthor").value;
-      //     const currentInstructions = document.getElementById("currentInstructions").value;
-      //     const newFood = document.getElementById("newFood").value;
-      //     const newImg = document.getElementById("newImg").value;
-      //     const newIngredients = document.getElementById("newIngredients").value;
-      //     const newAuthor = document.getElementById("newAuthor").value;
-      //     const newInstructions = document.getElementById("newInstructions").value;
+      document
+        .getElementById("updateRecipe")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const currentFood = document.getElementById("currentFood").value;
+          const currentImg = document.getElementById("currentImg").value;
+          const currentIngredients = document.getElementById("currentIngredients").value;
+          const currentAuthor = document.getElementById("currentAuthor").value;
+          const currentInstructions = document.getElementById("currentInstructions").value;
+          const newFood = document.getElementById("newFood").value;
+          const newImg = document.getElementById("newImg").value;
+          const newIngredients = document.getElementById("newIngredients").value;
+          const newAuthor = document.getElementById("newAuthor").value;
+          const newInstructions = document.getElementById("newInstructions").value;
 
-      //     try {
-      //       const response = await fetch(
-      //         `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
-      //         {
-      //           method: "PUT",
-      //           headers: {
-      //             "Content-Type": "application/json",
-      //           },
-      //           body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
-      //         }
-      //       );
-      //       const data = await response.json();
-      //       console.log(data);
-      //     } catch (error) {
-      //       alert("Error updating recipe: " + error.message);
-      //     }
-      //   });
-      // document
-      //   .getElementById("delete-user")
-      //   .addEventListener("submit", async (e) => {
-      //     e.preventDefault();
-      //     const name = document.getElementById("delete-name").value;
-      //     const email = document.getElementById("delete-email").value;
-      //     try {
-      //       const response = await fetch(`/user/${name}/${email}`, {
-      //         method: "DELETE",
-      //       });
-      //       if (!response.ok) {
-      //         throw new Error("Problem fetching delete endpoint");
-      //       }
-      //       const data = await response.text();
-      //       console.log(data);
-      //     } catch (error) {
-      //       console.error(
-      //         "Uh oh, there was a a problem! " + error.message + "."
-      //       );
-      //     }
-      //   });
+          try {
+            const response = await fetch(
+              `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
+              }
+            );
+            // console.log(response);
+            const data = await response.json();
+            console.log(data);
+          } catch (error) {
+            alert("Note -- Error updating recipe: " + error.message);
+          }
+        });
+      document
+        .getElementById("delete-user")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name = document.getElementById("delete-name").value;
+          const email = document.getElementById("delete-email").value;
+          try {
+            const response = await fetch(`/user/${name}/${email}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Problem fetching delete endpoint");
+            }
+            const data = await response.text();
+            console.log(data);
+          } catch (error) {
+            console.error(
+              "Uh oh, there was a a problem! " + error.message + "."
+            );
+          }
+        });
 
-      // async function fetchRecipes() {
-      //   try {
-      //     const response = await fetch('/recipes');
-      //     if (!response.ok) {
-      //       throw new Error("Error fetching recipes. Response not ok.");
-      //     }
-      //     const recipes = await response.json();
-      //     return recipes;
-      //   } catch(error) {
-      //     console.error("There was a problem.");
-      //     console.error(error);
-      //   }
-      // }  
+      async function fetchRecipes() {
+        try {
+          const response = await fetch('/recipes');
+          if (!response.ok) {
+            throw new Error("Error fetching recipes. Response not ok.");
+          }
+          const recipes = await response.json();
+          return recipes;
+        } catch(error) {
+          console.error("There was a problem.");
+          console.error(error);
+        }
+      }  
       
       async function renderRecipe() {
           const container = document.getElementById('container');

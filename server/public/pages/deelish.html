@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Deelish | More Recipes, Less Stress</title>
-    <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/010/252/097/small_2x/delicious-dessert-cake-file-free-png.png">
 
     <style>
@@ -93,7 +92,10 @@ nav > button {
   top: 10px;
   right: 18%;
 }
-div.img > div {
+#dycon {
+  margin-top: 35%;
+}
+.inner {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -105,11 +107,6 @@ div.img > div {
 img {
   width: 275px;
 }
-.big-img > img {
-  width: 1350px;
-  margin: 70px;
-}
-
 form {
   background-color: #ffcc33;
   border-radius: 50px;
@@ -179,27 +176,30 @@ hr {
             alt=""
           />
         </div>
-        <div>
+        <div class="inner">
           <p class="legend">Yakisoba</p>
           <img
             src="https://www.justonecookbook.com/wp-content/uploads/2023/09/Yakisoba-3464-V.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div class="inner">
           <p class="legend">Tacos</p>
           <img
             src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/Carne-Asada-Tacos-3.jpg"
             alt=""
           />
         </div>  
-        <div>
+        <div class="inner">
           <p class="legend">Pizza</p>
           <img
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
             alt=""
           />
         </div>
+      </div>
+      <div id="dycon" class="img">
+        <!-- Dynamically Created Content. -->
       </div>
     </div>
     <div id="dycon">
@@ -237,11 +237,11 @@ hr {
           required
         ></textarea>
         <br /><br />
-        <button type="submit">Submit Recipe</button>
+        <input type="submit" value="Submit" />
       </fieldset>
     </form>
       <h1>Recipe Management</h1>
-      <form id="updateForm">
+      <form id="updateRecipe">
         <fieldset>
           <legend>Update Recipe</legend>
           <label for="currentFood">Current Food:</label>
@@ -271,25 +271,25 @@ hr {
 
     <script>
       function redirectForm() {
-        window.location.href = "form.html";
+        window.location.href = "/form";
       }
       function redirectAbout() {
-        window.location.href = "about-us.html";
+        window.location.href = "/about";
       }
-      document
-        .getElementById("updateForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const currentFood = document.getElementById("currentFood").value;
-          const currentImg = document.getElementById("currentImg").value;
-          const currentIngredients = document.getElementById("currentIngredients").value;
-          const currentAuthor = document.getElementById("currentAuthor").value;
-          const currentInstructions = document.getElementById("currentInstructions").value;
-          const newFood = document.getElementById("newFood").value;
-          const newImg = document.getElementById("newImg").value;
-          const newIngredients = document.getElementById("newIngredients").value;
-          const newAuthor = document.getElementById("newAuthor").value;
-          const newInstructions = document.getElementById("newInstructions").value;
+      // document
+      //   .getElementById("updateRecipe")
+      //   .addEventListener("submit", async (e) => {
+      //     e.preventDefault();
+      //     const currentFood = document.getElementById("currentFood").value;
+      //     const currentImg = document.getElementById("currentImg").value;
+      //     const currentIngredients = document.getElementById("currentIngredients").value;
+      //     const currentAuthor = document.getElementById("currentAuthor").value;
+      //     const currentInstructions = document.getElementById("currentInstructions").value;
+      //     const newFood = document.getElementById("newFood").value;
+      //     const newImg = document.getElementById("newImg").value;
+      //     const newIngredients = document.getElementById("newIngredients").value;
+      //     const newAuthor = document.getElementById("newAuthor").value;
+      //     const newInstructions = document.getElementById("newInstructions").value;
 
           try {
             const response = await fetch(
@@ -304,10 +304,10 @@ hr {
             );
             const data = await response.json();
             console.log(data);
+            create(currentFood, currentImg)
           } catch (error) {
             alert("Error updating recipe: " + error.message);
           }
-        });
       document
         .getElementById("delete-user")
         .addEventListener("submit", async (e) => {
@@ -328,7 +328,12 @@ hr {
               "Uh oh, there was a a problem! " + error.message + "."
             );
           }
-        });
+      
+        } catch(error) {
+          console.error('Error fetching recipes:', error);
+        } 
+        window.onload = renderRecipe();
+      );
     </script>
   </body>
 </html>

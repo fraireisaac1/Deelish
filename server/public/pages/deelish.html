@@ -330,6 +330,7 @@ hr {
                 body: JSON.stringify({currentImg, currentIngredients, currentInstructions, newFood, newImg, newIngredients, newAuthor, newInstructions }),
               }
             );
+            console.log("it worked!");
             const data = await response.json();
             } catch(error) {
               console.error("There was a problem fetching the recipe.");

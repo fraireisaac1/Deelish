@@ -38,6 +38,12 @@ nav > button {
   border: none;
   position: absolute;
   top: 15px;
+  
+}
+nav > button:hover {
+  cursor: pointer;
+  filter: brightness(80%);
+  transition: all 1s ease;
 }
 #about {
   right: 20%;
@@ -129,6 +135,9 @@ button[type="submit"] {
   border: none;
   border-radius: 40px;
 }
+button:hover{
+  cursor: pointer;
+}
 h1 {
   text-align: center;
   margin: 50px;
@@ -137,6 +146,11 @@ h1 {
   background-color: #046e94;
   padding: 10px;
   border-radius: 50px;
+}
+.recipe:hover{
+  cursor: pointer;
+  filter: brightness(80%);
+  transition: all 1s ease;
 }
 legend {
   position: absolute;
@@ -171,28 +185,28 @@ hr {
         </nav>
       </div>
       <div class="img" id ="container">
-        <div>
+        <div class="recipe">
           <p class="legend">Cake</p>
           <img
             src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div class="recipe">
           <p class="legend">Yakisoba</p>
           <img
             src="https://www.justonecookbook.com/wp-content/uploads/2023/09/Yakisoba-3464-V.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div class="recipe">
           <p class="legend">Tacos</p>
           <img
             src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/04/Carne-Asada-Tacos-3.jpg"
             alt=""
           />
         </div>  
-        <div>
+        <div class="recipe">
           <p class="legend">Pizza</p>
           <img
             src="https://atsloanestable.com/wp-content/uploads/2023/06/new-york-style-pizza2.jpg"
@@ -353,6 +367,8 @@ hr {
           if(Array.isArray(recipes) && recipes.length > 0) {
             recipes.forEach((recipe) => {
               const recipeDiv = document.createElement('div');
+              recipeDiv.classList.add('recipe');
+              // const infoDiv = document.createElement('div');
 
               const img = document.createElement("img");
               // img.src = "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg";
@@ -362,9 +378,25 @@ hr {
               title.classList.add('legend');
               title.textContent = recipe.food;
 
+              // const author = document.createElement('p');
+              // title.classList.add('author');
+              // title.textContent = recipe.author;
+
+              // const ingredients = document.createElement('p');
+              // title.classList.add('ingredients');
+              // title.textContent = recipe.ingredients;
+
+              // const instructions = document.createElement('p');
+              // title.classList.add('instructions');
+              // title.textContent = recipe.instructions;
+
               recipeDiv.appendChild(title);
               recipeDiv.appendChild(img);
               container.appendChild(recipeDiv);
+              // infoDiv.appendChild(author);
+              // infoDiv.appendChild(ingredients);
+              // infoDiv.appendChild(instructions);
+              // container.appendChild(infoDiv);
           });
           }
       

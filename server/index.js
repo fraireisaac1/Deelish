@@ -29,6 +29,9 @@ app.get('/deelish', (req, res) => {
 app.get('/index', (req, res) => {
     res.sendFile('pages/form.html', { root: serverPublic });
 })
+app.get('/about', (req, res) => {
+    res.sendFile('pages/about.html', { root: serverPublic });
+})
 
 app.get('/users', async (req, res) => {
     try {

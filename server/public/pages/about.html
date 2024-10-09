@@ -12,6 +12,9 @@
             padding: 0;
             margin: 0;
         }
+        body::-webkit-scrollbar {
+            display: none;
+        }
         #title {
             position: absolute;
             font-size: 40px;
@@ -65,10 +68,34 @@
             padding-left: 25px;
             height: 70px;
         }
-        div.card {
-            width: 24%;
-            margin: 20px;
+        .card {
+            width: 80%;
+            text-align: center;
+            margin: auto;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            padding: 30px;
             background-color: #ffae42;
+        }
+        fieldset {
+            position: relative;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+        }
+        legend {
+            position: absolute;
+            top: -25px;
+            left: 41%;
+            font-family: "Lilita One";
+            font-size: 30px;
+            background-color: #046e94;
+            color: white;
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            align-content: center;
+            border-radius: 50px;
         }
     </style>
 </head>
@@ -82,11 +109,21 @@
           <button onclick="redirectForm()" id="sign-in">Sign In</button>
         </nav>
       </div>
-    <div class="card">
-        <h1 class="name">Isaac F.</h1>
-        <p>My contribution to this project was as the Project Coordinator. During the stand up sessions at the beginning of each class period, I set up what we all were going to do for the day, and prioritized the tasks that we'd have to accomplish for the project to fulfill the requirements of the rubric. Next up, when it came to the git commands and the git branch functionality in general, I did my best to keep everyone pushing their changes in order and making sure that no merge errors took place. Otherwise, I assisted Luis in some of the work for the backend programming with JavaScript, such as coding the CRUD endpoints. Also, I assisted in styling and designing the form.html page. Now, when it came to error handling, it was more of a collective group effort that I contributed towards. Overall, I'm very proud of what we've been able to accomplish with the Deelish project. While I did my fair share to contribute to the final product, I must say that the overall effort was a group one. My group members were awesome in how supportive they were, and the experience was easily worth the struggle.
-
-</p>
-    </div>
+    <fieldset class="card">
+        <legend class="name">Isaac F.</legend>
+        <p>My contribution to this project was as the Project Coordinator. During the stand up sessions at the beginning of each class period, I set up what we all were going to do for the day, and prioritized the tasks that we'd have to accomplish for the project to fulfill the requirements of the rubric. Next up, when it came to the git commands and the git branch functionality in general, I did my best to keep everyone pushing their changes in order and making sure that no merge errors took place. Otherwise, I assisted Luis in some of the work for the backend programming with JavaScript, such as coding the CRUD endpoints. Also, I assisted in styling and designing the form.html page. Now, when it came to error handling, it was more of a collective group effort that I contributed towards. Overall, I'm very proud of what we've been able to accomplish with the Deelish project. While I did my fair share to contribute to the final product, I must say that the overall effort was a group one. My group members were awesome in how supportive they were, and the experience was easily worth the struggle.</p>
+    </fieldset>
+    <fieldset class="card">
+        <legend class="name">Luis T.</legend>
+        <p></p>
+    </fieldset>
+    <fieldset class="card">
+        <legend class="name">Gabriel G.</legend>
+        <p></p>
+    </fieldset>
+    <fieldset class="card">
+        <legend class="name">Daniel C.</legend>
+        <p>I was in charge of working entirely in the CSS, and altering the HTML framework to better suit what I was looking for, without changing too much. Every day, the progress was staggering. Most of my issues were pretty easily resolved. These were usually just a matter of figuring out how the grid works, but I am pretty sure that concept was ditched two days after it started. No matter, one of the REAL issues was mostly working git, because it can, at times, get weird. I didn't have as many issues with merges until just two days before the deadline, when I started to actually implement the styling directly into a style tag of the page, but that managed pretty well. I was also in charge of making sure all the pages were linked into the main home, or landing page, which was as simple as flipping a tortilla. Once that was set up, I was overall assisting my teammates with whatever they had issues--mostly with issues caused by my nonsensical merges... REGARDLESS!! I was also fully in control of this very page, so you can judge yourself how it turned out. I say it look pretty simple, yet effective.</p>
+    </fieldset>
 </body>
 </html>

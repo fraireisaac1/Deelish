@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/010/252/097/small_2x/delicious-dessert-cake-file-free-png.png">
-    <title>Document</title>
+    <title>Sign In</title>
     <style>
       * {
           margin: 0;
@@ -244,10 +244,12 @@
     
     function openRegister() {
     	card.style.transform = "rotateY(-180deg)";
+      document.title = "Register"
     }
     
     function openLogin() {
     	card.style.transform = "rotateY(0deg)";
+      document.title = "Sing In"
     }
     
     document.addEventListener('DOMContentLoaded', (e) => {

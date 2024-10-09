@@ -98,7 +98,10 @@ nav > button:hover {
   top: 10px;
   right: 18%;
 }
-div.img > div {
+#dycon {
+  margin-top: 35%;
+}
+.recipe {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -110,11 +113,6 @@ div.img > div {
 img {
   width: 275px;
 }
-.big-img > img {
-  width: 1350px;
-  margin: 70px;
-}
-
 form {
   background-color: #ffcc33;
   border-radius: 50px;
@@ -214,6 +212,12 @@ hr {
           />
         </div>
       </div>
+      <div id="dycon" class="img">
+        <!-- Dynamically Created Content. -->
+      </div>
+    </div>
+    <div id="dycon">
+      <!-- Dynamically Created Content. -->
     </div>
     <form action="/submit-recipe" method="POST">
       <fieldset>
@@ -247,7 +251,7 @@ hr {
           required
         ></textarea>
         <br /><br />
-        <button type="submit">Submit Recipe</button>
+        <input type="submit" value="Submit" />
       </fieldset>
     </form>
       <h1>Recipe Management</h1>
@@ -301,84 +305,22 @@ hr {
           const newAuthor = document.getElementById("newAuthor").value;
           const newInstructions = document.getElementById("newInstructions").value;
 
-          // try {
-          //   const response = await fetch(
-          //     `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
-          //     {
-          //       method: "PUT",
-          //       headers: {
-          //         "Content-Type": "application/json",
-          //       },
-          //       body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
-          //     }
-          //   );
-          //   // console.log(response);
-          //   const data = await response.json();
-          //   console.log(data);
-          // } catch (error) {
-          //   alert("Note -- Error updating recipe: " + error.message);
-          // }
-            try {
+          try {
             const response = await fetch(
-              `/update-recipe/${currentFood}/${currentAuthor}`,
-
+              `/update-recipe/${currentFood}/${currentImg}/${currentIngredients}/${currentAuthor}/${currentInstructions}`,
               {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({currentImg, currentIngredients, currentInstructions, newFood, newImg, newIngredients, newAuthor, newInstructions }),
+                body: JSON.stringify({ newFood, newImg, newIngredients, newAuthor, newInstructions }),
               }
             );
-            console.log("it worked!");
             const data = await response.json();
-            } catch(error) {
-              console.error("There was a problem fetching the recipe.");
-            }
-        });
-      // document
-      //   .getElementById("delete-user")
-      //   .addEventListener("submit", async (e) => {
-      //     e.preventDefault();
-      //     const name = document.getElementById("delete-name").value;
-      //     const email = document.getElementById("delete-email").value;
-      //     try {
-      //       const response = await fetch(`/user/${name}/${email}`, {
-      //         method: "DELETE",
-      //       });
-      //       if (!response.ok) {
-      //         throw new Error("Problem fetching delete endpoint");
-      //       }
-      //       const data = await response.text();
-      //       console.log(data);
-      //     } catch (error) {
-      //       console.error(
-      //         "Uh oh, there was a a problem! " + error.message + "."
-      //       );
-      //     }
-      //   });
-
-      async function fetchRecipes() {
-        try {
-          const response = await fetch('/recipes');
-          if (!response.ok) {
-            throw new Error("Error fetching recipes. Response not ok.");
-          }
-          const recipes = await response.json();
-          return recipes;
-        } catch(error) {
-          console.error("There was a problem.");
-          console.error(error);
-        }
-      }  
-      
-      async function renderRecipe() {
-          const container = document.getElementById('container');
-          try{
-          const response = await fetch('/recipes');
-          if (response) {
-            // alert("We're here");
-            console.log("Recipe Response")
+            console.log(data);
+            create(currentFood, currentImg)
+          } catch (error) {
+            alert("Error updating recipe: " + error.message);
           }
           const recipes = await response.json();
           console.log("Recipes:" + recipes);
@@ -386,43 +328,22 @@ hr {
             recipes.forEach((recipe) => {
               const recipeDiv = document.createElement('div');
               recipeDiv.classList.add('recipe');
-              // const infoDiv = document.createElement('div');
 
               const img = document.createElement("img");
-              // img.src = "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg";
               img.src = recipe.img;
 
               const title = document.createElement('p');
               title.classList.add('legend');
               title.textContent = recipe.food;
 
-              // const author = document.createElement('p');
-              // title.classList.add('author');
-              // title.textContent = recipe.author;
-
-              // const ingredients = document.createElement('p');
-              // title.classList.add('ingredients');
-              // title.textContent = recipe.ingredients;
-
-              // const instructions = document.createElement('p');
-              // title.classList.add('instructions');
-              // title.textContent = recipe.instructions;
-
               recipeDiv.appendChild(title);
               recipeDiv.appendChild(img);
               container.appendChild(recipeDiv);
-              // infoDiv.appendChild(author);
-              // infoDiv.appendChild(ingredients);
-              // infoDiv.appendChild(instructions);
-              // container.appendChild(infoDiv);
           });
           }
-      
-        } catch(error) {
-          console.error('Error fetching recipes:', error);
-        }
-        } 
-        window.onload = renderRecipe();
+          window.onload = renderRecipe();
+        })
+
     </script>
   </body>
 </html>

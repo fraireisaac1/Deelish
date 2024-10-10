@@ -160,6 +160,7 @@ h1 {
   filter: brightness(80%);
   transition: all 1s ease;
 }
+
 legend {
   position: absolute;
   top: -25px;
@@ -180,7 +181,7 @@ hr {
   margin: 5px;
 }
 .infoDiv{
-  border: 1px solid yellow;
+  border: 2px solid orange;
   height: 275px;
   width: 275px;
 }
@@ -399,9 +400,11 @@ hr {
               recipeDiv.addEventListener('click', ()=> {
                 if(img.style.display === "none"){
                   infoDiv.style.display = "none"; 
+                  title.style.display = "inline-block";
                   img.style.display = "inline-block";
                 } else{
                   img.style.display = "none"; 
+                  title.style.display = "none";
                   infoDiv.style.display = "inline-block";
                 }
               })

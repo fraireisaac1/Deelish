@@ -35,3 +35,11 @@
 2. I've been getting this mostly off my mind, but I did visit a single website for about half a minute just to get title ideas, and that was [allrecipes](https://www.allrecipes.com/).
 
 3. No, I haven't exactly thought about much of that. Honestly, it never crossed my mind whatsoever. I'd say it's already pretty color-blind friendly with how the color scheme looks, but I might just research a tad on that.
+
+### Day 7
+
+1. We mainly all worked separately, so nothing would get stuck, and when one person was missing for the day, someone else took over, which added a slight more efficient touch. However, it also did added more onto the plate of one, which might've been a flaw.
+
+2. A lesson I've learned is that you should never forget to merge, commit, pull, and all that fancy stuff because then there will be countless errors, and waste more time because you'd need to fix those errors before VS Code even lets you continue working.
+
+3. I supported my teammates EMOTIONALLY. But in seriousness, it was mostly with errors, a few of which were mostly typos and syntax. Nevertheless, I was helped by my teammates because everything kept breaking, but it worked regardless.

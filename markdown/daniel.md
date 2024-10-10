@@ -35,3 +35,7 @@
 2. I've been getting this mostly off my mind, but I did visit a single website for about half a minute just to get title ideas, and that was [allrecipes](https://www.allrecipes.com/).
 
 3. No, I haven't exactly thought about much of that. Honestly, it never crossed my mind whatsoever. I'd say it's already pretty color-blind friendly with how the color scheme looks, but I might just research a tad on that.
+
+### Day 7
+
+1. 

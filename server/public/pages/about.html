@@ -21,8 +21,9 @@
             margin: 10px;
         }
         #title:hover {
-            color: gold;
             cursor: pointer;
+            color: gold;
+            font-style: italic;
         }
         nav > button {
             grid-area: header;
@@ -131,9 +132,123 @@
     </fieldset>
 
     <script>
-        function redirectHome() {
-            window.location.href = "/deelish"
+     function redirectHome() {
+      window.location.href = "/deelish";
+     }
+     function redirectForm() {
+        window.location.href = "/form";
+      }
+      function redirectAbout() {
+        window.location.href = "/about";
+      }
+      document
+        .getElementById("updateRecipe")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const currentFood = document.getElementById("currentFood").value;
+          const currentImg = document.getElementById("currentImg").value;
+          const currentIngredients = document.getElementById("currentIngredients").value;
+          const currentAuthor = document.getElementById("currentAuthor").value;
+          const currentInstructions = document.getElementById("currentInstructions").value;
+          const newFood = document.getElementById("newFood").value;
+          const newImg = document.getElementById("newImg").value;
+          const newIngredients = document.getElementById("newIngredients").value;
+          const newAuthor = document.getElementById("newAuthor").value;
+          const newInstructions = document.getElementById("newInstructions").value;
+
+            try {
+            const response = await fetch(
+              `/update-recipe/${currentFood}/${currentAuthor}`,
+
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({currentImg, currentIngredients, currentInstructions, newFood, newImg, newIngredients, newAuthor, newInstructions }),
+              }
+            );
+            console.log("it worked!");
+            alert('You updated the recipe!');
+            const data = await response.json();
+            } catch(error) {
+              console.error("There was a problem fetching the recipe.");
+            }
+        });
+      
+      async function renderRecipe() {
+          const container = document.getElementById('container');
+          try{
+          const response = await fetch('/recipes');
+          if (response) {
+            // alert("We're here");
+            console.log("Recipe Response")
+          }
+          const recipes = await response.json();
+          console.log("Recipes:" + recipes);
+          if(Array.isArray(recipes) && recipes.length > 0) {
+            recipes.forEach((recipe) => {
+              const recipeDiv = document.createElement('div');
+              recipeDiv.classList.add('recipe');
+              const infoDiv = document.createElement('div');
+              infoDiv.classList.add('recipe');
+              infoDiv.classList.add('infoDiv');
+              infoDiv.style.display = "none"; 
+              infoDiv.style.position = "absolute"; 
+              infoDiv.style.top = "0"; 
+              infoDiv.style.left = "0"; 
+
+
+              const img = document.createElement("img");
+              // img.src = "https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg";
+              img.src = recipe.img;
+
+              const title = document.createElement('p');
+              title.classList.add('legend');
+              title.textContent = recipe.food;
+
+              const infoTitle = document.createElement('p');
+              infoTitle.classList.add('legend');
+              infoTitle.textContent = recipe.food;
+
+              const author = document.createElement('p');
+              author.classList.add('author');
+              author.textContent = "Author: " + recipe.author;
+
+              const ingredients = document.createElement('p');
+              ingredients.classList.add('ingredients');
+              ingredients.textContent = "Ingredients: " + recipe.ingredients;
+
+              const instructions = document.createElement('p');
+              instructions.classList.add('instructions');
+              instructions.textContent = "Instructions: " + recipe.instructions;
+
+              recipeDiv.appendChild(title);
+              recipeDiv.appendChild(img);
+              container.appendChild(recipeDiv);
+              infoDiv.appendChild(infoTitle);
+              infoDiv.appendChild(author);
+              infoDiv.appendChild(ingredients);
+              infoDiv.appendChild(instructions);
+              recipeDiv.appendChild(infoDiv);
+
+              recipeDiv.addEventListener('click', ()=> {
+                if(img.style.display === "none"){
+                  infoDiv.style.display = "none"; 
+                  img.style.display = "inline-block";
+                } else{
+                  img.style.display = "none"; 
+                  infoDiv.style.display = "inline-block";
+                }
+              })
+          });
+          }
+      
+        } catch(error) {
+          console.error('Error fetching recipes:', error);
         }
+        } 
+        window.onload = renderRecipe();
     </script>
 </body>
 </html>

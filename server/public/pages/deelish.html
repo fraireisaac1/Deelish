@@ -29,8 +29,9 @@ body::-webkit-scrollbar {
   margin: 10px;
 }
 #title:hover {
-  color: gold;
   cursor: pointer;
+  color: gold;
+  font-style: italic;
 }
 nav > button {
   grid-area: header;
@@ -303,14 +304,14 @@ hr {
       </form>
 
     <script>
+     function redirectHome() {
+      window.location.href = "/deelish";
+     }
      function redirectForm() {
         window.location.href = "/form";
       }
       function redirectAbout() {
         window.location.href = "/about";
-      }
-      function redirectHome() {
-        window.location.href = "/deelish"
       }
       document
         .getElementById("updateRecipe")

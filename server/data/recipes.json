@@ -1,10 +1,10 @@
 [
   {
-    "food": "Taco",
-    "img": "https://cdn.pixabay.com/photo/2023/07/24/17/09/mexican-8147497_1280.png",
-    "ingredients": "Bla",
-    "author": "LeBron",
-    "instructions": "Taco Tuesday!"
+    "food": "Chicken Wings",
+    "img": "https://media.istockphoto.com/id/835903320/photo/baked-chicken-wings-with-sesame-seeds-and-sweet-chili-sauce-on-white-wooden-board.jpg?s=612x612&w=0&k=20&c=SH8ZCkEKuWD_wxulpntIJ0uD4yRnUf9UXovQwSwrmmA=",
+    "ingredients": "blah blah",
+    "author": "Daniel",
+    "instructions": "blah blah"
   },
   {
     "food": "Hot Dogs",
@@ -14,55 +14,6 @@
     "instructions": "blah"
   },
   {
-<<<<<<< HEAD
-    "food": "e",
-    "img": "e",
-    "ingredients": "e",
-    "author": "e",
-    "instructions": "e"
-  },
-  {
-    "food": "e",
-    "img": "e",
-    "ingredients": "e",
-    "author": "e",
-    "instructions": "e\r\n"
-  },
-  {
-    "food": "Test",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-    "ingredients": "None",
-    "author": "Me",
-    "instructions": "Figure 'em out, hun."
-  },
-  {
-    "food": "Test",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-    "ingredients": "None",
-    "author": "Me",
-    "instructions": "Ha\r\n"
-  },
-  {
-    "food": "Test",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-    "ingredients": "None",
-    "author": "Me",
-    "instructions": "Ha"
-  },
-  {
-    "food": "Test",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-    "ingredients": "e",
-    "author": "Me",
-    "instructions": "e"
-  },
-  {
-    "food": "Skibidi",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg",
-    "ingredients": "e",
-    "author": "Me",
-    "instructions": "e"
-=======
     "food": "Cookies",
     "img": "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSeT3WvZ46k-_UlRaUaG_d9CDk04eZ26ZzYRl7dl-g1dUEzNoxFnUDJSHGnLtiYdqJ6",
     "ingredients": "Blah",
@@ -75,6 +26,19 @@
     "ingredients": "Blah Blah",
     "author": "Gabriel",
     "instructions": "Blah Blah"
->>>>>>> 512e5c1531ef7b9783de397652149453dd7f61dd
+  },
+  {
+    "food": "Chicken Alfredo",
+    "img": "https://www.shutterstock.com/image-photo/fettuccine-alfredo-chicken-served-bowl-600nw-2502135175.jpg",
+    "ingredients": "blah blah blah",
+    "author": "Daniel",
+    "instructions": "blah blah"
+  },
+  {
+    "food": "Lasagna",
+    "img": "https://cdn.pixabay.com/photo/2022/11/08/05/34/lasagna-7577748_1280.jpg",
+    "ingredients": "Some ingredients",
+    "author": "Isaac",
+    "instructions": "Some Instructions"
   }
 ]

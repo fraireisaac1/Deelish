@@ -28,6 +28,11 @@ body::-webkit-scrollbar {
   font-size: 40px;
   margin: 10px;
 }
+#title:hover {
+  cursor: pointer;
+  color: gold;
+  font-style: italic;
+}
 nav > button {
   grid-area: header;
   color: white;
@@ -193,7 +198,7 @@ hr {
     <div class="grid">
       <div class="header">
         <nav>
-          <p id="title">Deelish</p>
+          <p id="title" onclick="redirectHome()">Deelish</p>
           <button onclick="redirectAbout()" id="about">About Us</button>
           <p id="i">I</p>
           <button onclick="redirectForm()" id="register">Register</button>
@@ -299,6 +304,9 @@ hr {
       </form>
 
     <script>
+     function redirectHome() {
+      window.location.href = "/deelish";
+     }
      function redirectForm() {
         window.location.href = "/form";
       }

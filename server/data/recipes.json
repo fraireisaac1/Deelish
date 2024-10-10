@@ -40,5 +40,19 @@
     "ingredients": "Some ingredients",
     "author": "Isaac",
     "instructions": "Some Instructions"
+  },
+  {
+    "food": "Bread Sticks",
+    "img": "https://www.fraser.pizzanonstop.ca/wp-content/uploads/2022/03/breadsticksmarinara.jpg",
+    "ingredients": "Some ingredients",
+    "author": "Luis",
+    "instructions": "Some more instructions."
+  },
+  {
+    "food": "Pie",
+    "img": "https://media.istockphoto.com/id/1411510281/photo/pecan-apple-and-pumpkin-pies.jpg?s=612x612&w=0&k=20&c=rxkAvSd0yLYqf6Af-YfThdYatXskFCF63gPtvUi3xNU=",
+    "ingredients": "Some stuff",
+    "author": "Gabe",
+    "instructions": "I really don't know anymore."
   }
 ]

@@ -40,3 +40,11 @@ For me it'd have to be using local storage to display some elements onto the scr
 allrecipes.com was a site that we referenced for how we wanted our site to look. This site inspired Daniel to design the html for the landing page in a similar way, and the color scheme of our site was also inspired by the site.
 ## Color Blindness and font size?
 We haven't considered this just yet, we implement it later.
+
+# 10/9/2024
+## What new skills or knowledge did you acquire while preforming your role? How did you apply these new skills?
+As the Project coordinator, I had to learn lots of stuff about git methods and how to keep the team on the right track in terms of the order of our commits. Also, I relearned a bunch about CSS styling so I could help with merge conflicts concerning styling, as well as so that I could CSS design the form.html page.
+## How did your team communicate throughout the project? What tools or methods were most effective?
+Our team communicated often when we were working on the same files, as well as we also announced whenever we were pushing to develop just to be certain that they're wouldn't be many merge conflicts.
+## How did these meetings influence your team's workflow and process?
+The advice Phil gave us was intrumental in how we were able to go about communicating as a team. His advice for how to not leave anyone behind less we all fail is something we followed closely for the entirety of the project.
